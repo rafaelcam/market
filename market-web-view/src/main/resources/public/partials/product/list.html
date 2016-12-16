@@ -39,19 +39,12 @@
                                 </h4>
                                 <p class="item-desc">{{ product.description }}</p>
                                 <div class="item-price">{{product.price | currency:'BRL':true:'1.2-2'}}</div>
+                                <a class="btn btn-white btn-block" (click)="orderService.addItem(product)">Comprar</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- END search-item-container -->
-                <!-- BEGIN pagination -->
-
-                <!-- END pagination -->
             </div>
-            <!-- END search-content -->
-            <!-- BEGIN search-sidebar -->
-            <!-- END search-sidebar -->
         </div>
         <!-- END search-container -->
     </div>

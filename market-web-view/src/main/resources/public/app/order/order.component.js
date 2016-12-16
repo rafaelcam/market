@@ -9,10 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var order_service_1 = require("../order/order.service");
 var ProductListComponent = (function () {
-    function ProductListComponent(orderService) {
-        this.orderService = orderService;
+    function ProductListComponent() {
     }
     ProductListComponent.prototype.ngOnInit = function () {
         this.products = this.findAllProducts();
@@ -35,9 +33,9 @@ var ProductListComponent = (function () {
             selector: 'product-list',
             templateUrl: '../partials/product/list.html'
         }), 
-        __metadata('design:paramtypes', [order_service_1.OrderService])
+        __metadata('design:paramtypes', [])
     ], ProductListComponent);
     return ProductListComponent;
 }());
 exports.ProductListComponent = ProductListComponent;
-//# sourceMappingURL=product.list.component.js.map
+//# sourceMappingURL=order.component.js.map

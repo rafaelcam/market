@@ -18,6 +18,9 @@ var app_routes_1 = require("./app.routes");
 var email_component_1 = require("./email/email.component");
 var email_service_1 = require("./email/email.service");
 var product_list_component_1 = require("./product/product.list.component");
+var order_service_1 = require("./order/order.service");
+var item_order_service_1 = require("./order/item.order.service");
+var cart_component_1 = require("./cart/cart.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -33,10 +36,13 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 home_component_1.HomeComponent,
                 email_component_1.EmailComponent,
-                product_list_component_1.ProductListComponent
+                product_list_component_1.ProductListComponent,
+                cart_component_1.CartComponent
             ],
             providers: [
-                email_service_1.EmailService
+                email_service_1.EmailService,
+                order_service_1.OrderService,
+                item_order_service_1.ItemOrderService
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

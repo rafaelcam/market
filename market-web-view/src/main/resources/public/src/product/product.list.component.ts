@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "./product.model";
+import {ItemOrderService} from "../order/item.order.service";
+import {ItemOrder} from "../order/item.order.model";
+import {OrderService} from "../order/order.service";
 @Component({
     selector: 'product-list',
     templateUrl: '../partials/product/list.html'
@@ -11,6 +14,8 @@ export class ProductListComponent implements OnInit{
     ngOnInit(): void {
         this.products = this.findAllProducts();
     }
+
+    constructor(public orderService: OrderService) { }
 
     findAllProducts(): Product[] {
         return [
@@ -25,5 +30,4 @@ export class ProductListComponent implements OnInit{
             {name: 'iPad Air 2', description: 'Light. Heavyweight.', price: 399.00, image: 'assets/img/ipad-air.png'}
         ]
     }
-
 }

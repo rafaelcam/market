@@ -9,6 +9,9 @@ import {routing} from "./app.routes";
 import {EmailComponent} from "./email/email.component";
 import {EmailService} from "./email/email.service";
 import {ProductListComponent} from "./product/product.list.component";
+import {OrderService} from "./order/order.service";
+import {ItemOrderService} from "./order/item.order.service";
+import {CartComponent} from "./cart/cart.component";
 
 
 @NgModule({
@@ -22,10 +25,13 @@ import {ProductListComponent} from "./product/product.list.component";
     AppComponent,
     HomeComponent,
     EmailComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartComponent
   ],
   providers: [
-    EmailService
+    EmailService,
+    OrderService,
+    ItemOrderService
   ],
   bootstrap: [ AppComponent ]
 })
