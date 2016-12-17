@@ -8,14 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var order_service_1 = require("../order/order.service");
+var core_1 = require("@angular/core");
+var cart_service_1 = require("../cart/cart.service");
 var ProductListComponent = (function () {
-    function ProductListComponent(orderService) {
-        this.orderService = orderService;
+    function ProductListComponent(cartService) {
+        this.cartService = cartService;
     }
     ProductListComponent.prototype.ngOnInit = function () {
         this.products = this.findAllProducts();
+    };
+    ProductListComponent.prototype.addProductCart = function (product) {
+        this.cartService.addItem(product);
     };
     ProductListComponent.prototype.findAllProducts = function () {
         return [
@@ -30,14 +33,14 @@ var ProductListComponent = (function () {
             { name: 'iPad Air 2', description: 'Light. Heavyweight.', price: 399.00, image: 'assets/img/ipad-air.png' }
         ];
     };
-    ProductListComponent = __decorate([
-        core_1.Component({
-            selector: 'product-list',
-            templateUrl: '../partials/product/list.html'
-        }), 
-        __metadata('design:paramtypes', [order_service_1.OrderService])
-    ], ProductListComponent);
     return ProductListComponent;
 }());
+ProductListComponent = __decorate([
+    core_1.Component({
+        selector: 'product-list',
+        templateUrl: '../partials/product/list.html'
+    }),
+    __metadata("design:paramtypes", [cart_service_1.CartService])
+], ProductListComponent);
 exports.ProductListComponent = ProductListComponent;
 //# sourceMappingURL=product.list.component.js.map

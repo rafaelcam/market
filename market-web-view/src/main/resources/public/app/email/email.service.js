@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
 var EmailService = (function () {
     function EmailService(http) {
         this.http = http;
@@ -22,11 +22,11 @@ var EmailService = (function () {
     EmailService.prototype.enviarEmails = function (email) {
         return this.http.post(this.url + "enviaremailpadrao", email).map(function (res) { return res; });
     };
-    EmailService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], EmailService);
     return EmailService;
 }());
+EmailService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], EmailService);
 exports.EmailService = EmailService;
 //# sourceMappingURL=email.service.js.map

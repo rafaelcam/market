@@ -9,9 +9,11 @@ import {routing} from "./app.routes";
 import {EmailComponent} from "./email/email.component";
 import {EmailService} from "./email/email.service";
 import {ProductListComponent} from "./product/product.list.component";
-import {OrderService} from "./order/order.service";
-import {ItemOrderService} from "./order/item.order.service";
 import {CartComponent} from "./cart/cart.component";
+import {CartService} from "./cart/cart.service";
+import {ItemCartService} from "./cart/item.cart.service";
+import {CheckoutCartComponent} from "./checkout/checkout.cart.component";
+import {CheckoutWizardComponent} from "./checkout/checkout.wizard.component";
 
 
 @NgModule({
@@ -26,12 +28,14 @@ import {CartComponent} from "./cart/cart.component";
     HomeComponent,
     EmailComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
+    CheckoutCartComponent,
+    CheckoutWizardComponent
   ],
   providers: [
     EmailService,
-    OrderService,
-    ItemOrderService
+    CartService,
+    ItemCartService
   ],
   bootstrap: [ AppComponent ]
 })

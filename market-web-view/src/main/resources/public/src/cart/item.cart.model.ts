@@ -1,7 +1,7 @@
 
 import {Product} from "../product/product.model";
 
-export class ItemOrder {
+export class ItemCart {
     product: Product;
     quantity: number;
     totalItem: number;
