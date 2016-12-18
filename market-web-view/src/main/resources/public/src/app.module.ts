@@ -14,6 +14,10 @@ import {CartService} from "./cart/cart.service";
 import {ItemCartService} from "./cart/item.cart.service";
 import {CheckoutCartComponent} from "./checkout/checkout.cart.component";
 import {CheckoutWizardComponent} from "./checkout/checkout.wizard.component";
+import {CheckoutInfoComponent} from "./checkout/checkout.info.component";
+import {CustomerService} from "./customer/customer.service";
+import {CheckoutPaymentComponent} from "./checkout/checkout.payment.component";
+import {PaymentService} from "./payment/payment.service";
 
 
 @NgModule({
@@ -30,12 +34,16 @@ import {CheckoutWizardComponent} from "./checkout/checkout.wizard.component";
     ProductListComponent,
     CartComponent,
     CheckoutCartComponent,
-    CheckoutWizardComponent
+    CheckoutWizardComponent,
+    CheckoutInfoComponent,
+    CheckoutPaymentComponent
   ],
   providers: [
     EmailService,
     CartService,
-    ItemCartService
+    ItemCartService,
+    CustomerService,
+    PaymentService
   ],
   bootstrap: [ AppComponent ]
 })
