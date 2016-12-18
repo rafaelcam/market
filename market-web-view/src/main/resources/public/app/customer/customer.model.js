@@ -3,7 +3,6 @@ var Customer = (function () {
     function Customer() {
         this.name = '';
         this.email = '';
-        this.dataNascimento = new Date();
         this.phone = '';
         this.address = '';
     }

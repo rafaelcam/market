@@ -1,6 +1,9 @@
 package com.market.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -25,6 +28,7 @@ public class ItemCart implements Serializable {
 
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     @ManyToOne
+    @JsonIgnore
     private Cart cart;
 
     @JoinColumn(name = "product_id", referencedColumnName = "id")

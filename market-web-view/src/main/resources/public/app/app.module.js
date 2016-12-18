@@ -30,6 +30,8 @@ var payment_service_1 = require("./payment/payment.service");
 var product_service_1 = require("./product/product.service");
 var order_service_1 = require("./order/order.service");
 var order_button_component_1 = require("./order/order.button.component");
+var message_service_1 = require("./message/message.service");
+var message_component_1 = require("./message/message.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -53,16 +55,19 @@ AppModule = __decorate([
             checkout_wizard_component_1.CheckoutWizardComponent,
             checkout_info_component_1.CheckoutInfoComponent,
             checkout_payment_component_1.CheckoutPaymentComponent,
-            order_button_component_1.OrderButtonComponent
+            order_button_component_1.OrderButtonComponent,
+            message_component_1.MessageComponent
         ],
         providers: [
+            { provide: core_1.LOCALE_ID, useValue: "pt-BR" },
             email_service_1.EmailService,
             cart_service_1.CartService,
             item_cart_service_1.ItemCartService,
             customer_service_1.CustomerService,
             payment_service_1.PaymentService,
             product_service_1.ProductService,
-            order_service_1.OrderService
+            order_service_1.OrderService,
+            message_service_1.MessageService
         ],
         bootstrap: [app_component_1.AppComponent]
     }),

@@ -1,5 +1,7 @@
 package com.market.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,16 +20,16 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "error.customer.name.notempty")
     private String name;
 
+    @NotEmpty(message = "error.customer.email.notempty")
     private String email;
 
-    @Column(name = "birth_date")
-    @Temporal(TemporalType.DATE)
-    private Date birthDate;
-
+    @NotEmpty(message = "error.customer.phone.notempty")
     private String phone;
 
+    @NotEmpty(message = "error.customer.address.notempty")
     private String address;
 
     public Customer() {
@@ -36,7 +38,6 @@ public class Customer implements Serializable {
     public Customer(String name, String email, Date birthDate, String phone, String address) {
         this.name = name;
         this.email = email;
-        this.birthDate = birthDate;
         this.phone = phone;
         this.address = address;
     }
@@ -65,14 +66,6 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -95,7 +88,6 @@ public class Customer implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", birthDate=" + birthDate +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';

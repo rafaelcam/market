@@ -14,8 +14,10 @@ var cart_service_1 = require("../cart/cart.service");
 var customer_service_1 = require("../customer/customer.service");
 var payment_service_1 = require("../payment/payment.service");
 var http_1 = require("@angular/http");
+var message_service_1 = require("../message/message.service");
 var OrderService = (function () {
-    function OrderService(http, cartService, customerService, paymentService) {
+    function OrderService(messageService, http, cartService, customerService, paymentService) {
+        this.messageService = messageService;
         this.http = http;
         this.cartService = cartService;
         this.customerService = customerService;
@@ -23,14 +25,54 @@ var OrderService = (function () {
         this.url = 'http://localhost:8081/';
     }
     OrderService.prototype.sendOrder = function () {
-        var _this = this;
         this.makeOrder();
+        this.validateAndSendOrder();
+    };
+    OrderService.prototype.validateAndSendOrder = function () {
+        var _this = this;
+        this.callValidateOrder()
+            .subscribe(function (res) {
+            _this.validateCustomer();
+        }, function (error) {
+            _this.messageService.loadErrorMessages(error.json());
+        });
+    };
+    OrderService.prototype.validateCustomer = function () {
+        var _this = this;
+        this.callValidateCustomer()
+            .subscribe(function (res) {
+            _this.validatePayment();
+        }, function (error) {
+            _this.messageService.loadErrorMessages(error.json());
+        });
+    };
+    OrderService.prototype.validatePayment = function () {
+        var _this = this;
+        this.callValidatePayment()
+            .subscribe(function (res) {
+            _this.sendOrderRequest();
+        }, function (error) {
+            _this.messageService.loadErrorMessages(error.json());
+        });
+    };
+    OrderService.prototype.sendOrderRequest = function () {
+        var _this = this;
         this.callSendOrderRequest()
             .subscribe(function (res) {
             _this.order = res;
         }, function (error) {
-            console.log('Ocorreu um erro ao tentar realizar o Pedido.');
+            console.log(error.json());
+            _this.messageService.loadErrorMessages(error.json());
         });
+    };
+    OrderService.prototype.callValidateOrder = function () {
+        return this.http.post(this.url + "orderbuy/isvalid", this.order).map(function (res) { return res; });
+    };
+    OrderService.prototype.callValidateCustomer = function () {
+        return this.http.post(this.url + "customer/isvalid", this.order.customer).map(function (res) { return res; });
+    };
+    OrderService.prototype.callValidatePayment = function () {
+        return this.http.post(this.url + "payment/isvalid", this.order.payment).map(function (res) { return res; });
     };
     OrderService.prototype.callSendOrderRequest = function () {
         return this.http.post(this.url + "orderbuy/", this.order).map(function (res) { return res.json(); });
@@ -42,7 +84,8 @@ var OrderService = (function () {
 }());
 OrderService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http,
+    __metadata("design:paramtypes", [message_service_1.MessageService,
+        http_1.Http,
         cart_service_1.CartService,
         customer_service_1.CustomerService,
         payment_service_1.PaymentService])

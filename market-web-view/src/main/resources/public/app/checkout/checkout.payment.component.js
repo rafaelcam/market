@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var payment_service_1 = require("../payment/payment.service");
+var cart_service_1 = require("../cart/cart.service");
 var CheckoutPaymentComponent = (function () {
-    function CheckoutPaymentComponent(paymentService) {
+    function CheckoutPaymentComponent(paymentService, cartService) {
         this.paymentService = paymentService;
+        this.cartService = cartService;
         this.payment = 'payment';
     }
     return CheckoutPaymentComponent;
@@ -22,7 +24,8 @@ CheckoutPaymentComponent = __decorate([
         selector: 'checkout-info',
         templateUrl: '../partials/checkout/checkout-payment.html'
     }),
-    __metadata("design:paramtypes", [payment_service_1.PaymentService])
+    __metadata("design:paramtypes", [payment_service_1.PaymentService,
+        cart_service_1.CartService])
 ], CheckoutPaymentComponent);
 exports.CheckoutPaymentComponent = CheckoutPaymentComponent;
 //# sourceMappingURL=checkout.payment.component.js.map

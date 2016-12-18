@@ -1,0 +1,4 @@
+<div class="alert alert-danger" [hidden]="messageService.messages.length === 0">
+    <a  (click)="clearMessages()" class="close" aria-label="close" title="Fechar">×</a>
+    <p *ngFor="let message of messageService.messages; let i = index; trackBy: trackByFn">{{message.message}}</p>
+</div>

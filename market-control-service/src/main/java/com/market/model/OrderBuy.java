@@ -1,6 +1,8 @@
 package com.market.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -17,14 +19,17 @@ public class OrderBuy implements Serializable {
 
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.PERSIST)
+    @NotNull(message = "error.orderbuy.cart.notnull")
     private Cart cart;
 
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.PERSIST)
+    @NotNull(message = "error.orderbuy.customer.notnull")
     private Customer customer;
 
     @JoinColumn(name = "payment_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.PERSIST)
+    @NotNull(message = "error.orderbuy.payment.notnull")
     private Payment payment;
 
     public OrderBuy() {

@@ -98,11 +98,11 @@
 
 /* Header Cart Setting */
 
-.header-cart {
+.header-cartWrapper {
     display: block;
     color: #212121;
     
-    & .header-cart-icon {
+    & .header-cartWrapper-icon {
         float: right;
         font-size: 28px;
         height: 48px;
@@ -112,7 +112,7 @@
         position: relative;
         margin: -18px -15px -18px 0;
     }
-    & .header-cart-icon .total {
+    & .header-cartWrapper-icon .total {
         position: absolute;
         top: 12px;
         right: 7px;
@@ -125,7 +125,7 @@
         padding-right: 4px;
         .border-radius(14px);
     }
-    & .header-cart-text {
+    & .header-cartWrapper-text {
         margin-right: 35px;
         line-height: 20px;
     }
@@ -226,16 +226,16 @@
 
 /* Header Cart Setting */
 
-.cart-header,
-.cart-body,
-.cart-footer {
+.cartWrapper-header,
+.cartWrapper-body,
+.cartWrapper-footer {
     padding: 15px;
 }
-.cart-header + .cart-body,
-.cart-body + .cart-footer {
+.cartWrapper-header + .cartWrapper-body,
+.cartWrapper-body + .cartWrapper-footer {
     border-top: 1px solid #e5e5e5;
 }
-.cart-item {
+.cartWrapper-item {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -265,12 +265,12 @@
         }
     }
 }
-.cart-title {
+.cartWrapper-title {
     font-size: 12px;
     font-weight: bold;
     margin: 0;
 }
-.cart-item-image {
+.cartWrapper-item-image {
     float: left;
     width: 80px;
     height: 60px;
@@ -285,14 +285,14 @@
         max-height: 100%;
     }
 }
-.cart-item-info {
+.cartWrapper-item-info {
     width: 80%;
 }
-.cart-item-image + .cart-item-info,
-.cart-item-info + .cart-item-close {
+.cartWrapper-item-image + .cartWrapper-item-info,
+.cartWrapper-item-info + .cartWrapper-item-close {
     padding-left: 15px;
 }
-.cart-item-close a {
+.cartWrapper-item-close a {
     font-size: 18px;
     color: #999;
     height: 24px;
@@ -310,7 +310,7 @@
         color: #fff;
     }
 }
-.dropdown-menu.dropdown-menu-cart {
+.dropdown-menu.dropdown-menu-cartWrapper {
     left: auto;
     right: 0;
     margin-right: -142px;

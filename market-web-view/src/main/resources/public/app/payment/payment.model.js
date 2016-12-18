@@ -6,6 +6,7 @@ var Payment = (function () {
         this.monthExpiration = '';
         this.yearExpiration = '';
         this.securityCode = '';
+        this.installments = 1;
     }
     return Payment;
 }());

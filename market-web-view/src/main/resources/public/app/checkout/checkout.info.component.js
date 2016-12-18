@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var customer_service_1 = require("../customer/customer.service");
+var cart_service_1 = require("../cart/cart.service");
 var CheckoutInfoComponent = (function () {
-    function CheckoutInfoComponent(customerService) {
+    function CheckoutInfoComponent(customerService, cartService) {
         this.customerService = customerService;
+        this.cartService = cartService;
         this.info = 'info';
     }
     return CheckoutInfoComponent;
@@ -22,7 +24,8 @@ CheckoutInfoComponent = __decorate([
         selector: 'checkout-info',
         templateUrl: '../partials/checkout/checkout-info.html'
     }),
-    __metadata("design:paramtypes", [customer_service_1.CustomerService])
+    __metadata("design:paramtypes", [customer_service_1.CustomerService,
+        cart_service_1.CartService])
 ], CheckoutInfoComponent);
 exports.CheckoutInfoComponent = CheckoutInfoComponent;
 //# sourceMappingURL=checkout.info.component.js.map

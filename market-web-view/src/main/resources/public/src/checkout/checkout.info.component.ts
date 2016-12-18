@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {CustomerService} from "../customer/customer.service";
+import {CartService} from "../cart/cart.service";
 
 @Component({
     selector: 'checkout-info',
@@ -9,7 +10,8 @@ export class CheckoutInfoComponent {
 
     info: string = 'info';
 
-    constructor(public customerService: CustomerService) { }
+    constructor(public customerService: CustomerService,
+                public cartService: CartService) { }
 
 
 

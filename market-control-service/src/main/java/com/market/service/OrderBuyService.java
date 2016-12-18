@@ -10,9 +10,13 @@ import org.springframework.stereotype.Service;
 public class OrderBuyService implements IOrderBuyService {
 
     @Autowired
+    IItemCartService itemCartService;
+
+    @Autowired
     OrderBuyRepository repository;
 
     public OrderBuy save(OrderBuy orderBuy) throws Exception {
+        itemCartService.loadCartInItemsCart(orderBuy.getCart());
         return repository.save(orderBuy);
     }
 }

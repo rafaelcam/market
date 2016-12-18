@@ -29,17 +29,17 @@
                     <!-- BEGIN item-row -->
                     <div class="item-row">
                         <!-- BEGIN item -->
-                        <div class="item item-thumbnail" *ngFor="let product of products; let i = index; trackBy: trackByFn">
-                            <a href="product-detail.html" class="item-image">
-                                <img src="{{ product.image }}" alt="" />
+                        <div class="item item-thumbnail" *ngFor="let productWrapper of products; let i = index; trackBy: trackByFn">
+                            <a href="productWrapper-detail.html" class="item-image">
+                                <img src="{{ productWrapper.image }}" alt="" />
                             </a>
                             <div class="item-info">
                                 <h4 class="item-title">
-                                    <a href="product-detail.html">{{ product.name }}</a>
+                                    <a href="productWrapper-detail.html">{{ productWrapper.name }}</a>
                                 </h4>
-                                <p class="item-desc">{{ product.description }}</p>
-                                <div class="item-price">{{product.price | currency:'BRL':true:'1.2-2'}}</div>
-                                <a class="btn btn-white btn-block" (click)="addProductCart(product)">Comprar</a>
+                                <p class="item-desc">{{ productWrapper.description }}</p>
+                                <div class="item-price">{{productWrapper.price | currency:'BRL':true:'1.2-2'}}</div>
+                                <a class="btn btn-white btn-block" (click)="addProductCart(productWrapper)">Comprar</a>
                             </div>
                         </div>
                     </div>

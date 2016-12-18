@@ -47,7 +47,7 @@
 
 /* Checkout Payment Type Setting */
 
-.checkout .payment-type {
+.checkout .paymentWrapper-type {
     font-size: 28px;
     margin: 0;
     
@@ -154,7 +154,7 @@
 
 /* Checkout Table Cart Setting */
 
-.table.table-cart {
+.table.table-cartWrapper {
     & th {
         border: none;
         font-size: 14px;
@@ -166,20 +166,20 @@
     & td {
         padding: 15px 20px;
     }
-    & .cart-product .product-img {
+    & .cartWrapper-productWrapper .productWrapper-img {
         float: left;
         width: 120px;
     }
-    & .cart-product .product-img img {
+    & .cartWrapper-productWrapper .productWrapper-img img {
         max-width: 100%;
     }
-    & .cart-product .product-info {
+    & .cartWrapper-productWrapper .productWrapper-info {
         margin-left: 130px;
     }
-    & .cart-product .product-info .title {
+    & .cartWrapper-productWrapper .productWrapper-info .title {
         font-weight: 600;
     }
-    & .cart-product .product-info .desc {
+    & .cartWrapper-productWrapper .productWrapper-info .desc {
         color: #666;
         font-size: 12px;
     }
@@ -188,19 +188,19 @@
 
 /* Checkout Cart Qty Setting */
 
-.cart-qty {
+.cartWrapper-qty {
     width: 160px;
 }
-.cart-total,
-.cart-control {
+.cartWrapper-total,
+.cartWrapper-control {
     width: 100px;
 }
-.cart-qty .qty-desc {
+.cartWrapper-qty .qty-desc {
     font-size: 12px;
     color: #9c9c9c;
     margin-top: 5px;
 }
-.cart-qty-input {
+.cartWrapper-qty-input {
     display: table;
     width: 100%;
     
@@ -285,7 +285,7 @@
         }
     }
 }
-.table.table-payment-summary {
+.table.table-paymentWrapper-summary {
     border-bottom: 1px solid #ddd;
     margin-bottom: 30px;
     
@@ -299,19 +299,19 @@
         text-align: right;
         width: 50%;
     }
-    & .product-summary .product-summary-img {
+    & .productWrapper-summary .productWrapper-summary-img {
         float: left;
         width: 120px;
         margin-right: 10px;
     }
-    & .product-summary .product-summary-img img {
+    & .productWrapper-summary .productWrapper-summary-img img {
         max-width: 100%;
     }
-    & .product-summary .product-summary-info .title {
+    & .productWrapper-summary .productWrapper-summary-info .title {
         font-weight: 600;
         font-size: 16px;
     }
-    & .product-summary .product-summary-info .desc {
+    & .productWrapper-summary .productWrapper-summary-info .desc {
         font-size: 14px;
         color: #9c9c9c;
     }

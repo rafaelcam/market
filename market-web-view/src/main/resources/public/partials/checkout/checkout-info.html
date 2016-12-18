@@ -1,9 +1,10 @@
-<!-- BEGIN #checkout-payment -->
+<!-- BEGIN #checkout-paymentWrapper -->
 <div class="section-container" id="checkout-info">
     <!-- BEGIN container -->
     <div class="container">
+        <h2 [hidden]="cartService.cartWrapper.items.length > 0" class="text-center">Não há produtos em seu carrinho.</h2>
         <!-- BEGIN checkout -->
-        <div class="checkout">
+        <div class="checkout" [hidden]="cartService.cartWrapper.items.length === 0">
             <form action="checkout_payment.html" method="POST" name="form_shipping" class="form-horizontal">
                 <checkout-wizard [activeSection]="info"></checkout-wizard>
 
@@ -14,7 +15,7 @@
                             Nome <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="name" [(ngModel)]="customerService.customer.name" />
+                            <input type="text" class="form-control" name="name" [(ngModel)]="customerService.customerWrapper.name" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -22,15 +23,7 @@
                             Email <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="email" [(ngModel)]="customerService.customer.email" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-4">
-                            Data de Nascimento <span class="text-danger">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" name="dateBir" [(ngModel)]="customerService.customer.dataNascimento" />
+                            <input type="text" class="form-control" name="email" [(ngModel)]="customerService.customerWrapper.email" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,7 +31,7 @@
                             Telefone <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="phone" [(ngModel)]="customerService.customer.phone" />
+                            <input type="text" class="form-control" name="phone" [(ngModel)]="customerService.customerWrapper.phone" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -46,15 +39,15 @@
                             Endereço <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="address" [(ngModel)]="customerService.customer.address" />
+                            <input type="text" class="form-control" name="address" [(ngModel)]="customerService.customerWrapper.address" />
                         </div>
                     </div>
                 </div>
                 <!-- END checkout-body -->
                 <!-- BEGIN checkout-footer -->
                 <div class="checkout-footer">
-                    <a routerLink="/checkout/cart" class="btn btn-white btn-lg pull-left">Voltar</a>
-                    <a routerLink="/checkout/payment" class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10">Avançar</a>
+                    <a routerLink="/checkout/cartWrapper" class="btn btn-white btn-lg pull-left">Voltar</a>
+                    <a routerLink="/checkout/paymentWrapper" class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10">Avançar</a>
                 </div>
                 <!-- END checkout-footer -->
             </form>
@@ -63,4 +56,4 @@
     </div>
     <!-- END container -->
 </div>
-<!-- END #checkout-customer -->
+<!-- END #checkout-customerWrapper -->
