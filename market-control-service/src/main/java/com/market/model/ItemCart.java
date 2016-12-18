@@ -80,4 +80,15 @@ public class ItemCart implements Serializable {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "ItemCart{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", totalItem=" + totalItem +
+                ", cart=" + cart +
+                ", product=" + product +
+                '}';
+    }
 }

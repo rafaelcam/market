@@ -84,5 +84,16 @@ public class Payment implements Serializable {
     public void setSecurityCode(String securityCode) {
         this.securityCode = securityCode;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                ", monthExpiration='" + monthExpiration + '\'' +
+                ", yearExpiration='" + yearExpiration + '\'' +
+                ", securityCode='" + securityCode + '\'' +
+                '}';
+    }
 }

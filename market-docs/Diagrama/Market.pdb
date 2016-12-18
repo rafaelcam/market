@@ -12,7 +12,7 @@
 <a:Code>MARKET</a:Code>
 <a:CreationDate>1482029700</a:CreationDate>
 <a:Creator>JRafael</a:Creator>
-<a:ModificationDate>1482031773</a:ModificationDate>
+<a:ModificationDate>1482032822</a:ModificationDate>
 <a:Modifier>JRafael</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
@@ -75,7 +75,7 @@ UpdateTableStatistics=Yes
 UpdateColumnStatistics=Yes
 
 [FolderOptions\Physical Objects\Database Generation]
-GenScriptName=market-script
+GenScriptName=market-script.sql
 GenScriptName0=
 GenScriptName1=
 GenScriptName2=
@@ -3073,9 +3073,9 @@ TableComment 0 Arial,8,N</a:FontList>
 <a:Code>PRICE</a:Code>
 <a:CreationDate>1482030083</a:CreationDate>
 <a:Creator>JRafael</a:Creator>
-<a:ModificationDate>1482030197</a:ModificationDate>
+<a:ModificationDate>1482033079</a:ModificationDate>
 <a:Modifier>JRafael</a:Modifier>
-<a:DataType>double</a:DataType>
+<a:DataType>decimal</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o38">
@@ -3256,9 +3256,9 @@ TableComment 0 Arial,8,N</a:FontList>
 <a:Code>TOTAL_ITEM</a:Code>
 <a:CreationDate>1482030470</a:CreationDate>
 <a:Creator>JRafael</a:Creator>
-<a:ModificationDate>1482030569</a:ModificationDate>
+<a:ModificationDate>1482033062</a:ModificationDate>
 <a:Modifier>JRafael</a:Modifier>
-<a:DataType>double</a:DataType>
+<a:DataType>decimal</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o51">
@@ -3317,9 +3317,9 @@ TableComment 0 Arial,8,N</a:FontList>
 <a:Code>DISCOUNT</a:Code>
 <a:CreationDate>1482030623</a:CreationDate>
 <a:Creator>JRafael</a:Creator>
-<a:ModificationDate>1482030701</a:ModificationDate>
+<a:ModificationDate>1482033033</a:ModificationDate>
 <a:Modifier>JRafael</a:Modifier>
-<a:DataType>double</a:DataType>
+<a:DataType>decimal</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o55">
@@ -3328,9 +3328,9 @@ TableComment 0 Arial,8,N</a:FontList>
 <a:Code>TOTAL_CART</a:Code>
 <a:CreationDate>1482030623</a:CreationDate>
 <a:Creator>JRafael</a:Creator>
-<a:ModificationDate>1482030701</a:ModificationDate>
+<a:ModificationDate>1482033033</a:ModificationDate>
 <a:Modifier>JRafael</a:Modifier>
-<a:DataType>double</a:DataType>
+<a:DataType>decimal</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 </c:Columns>

@@ -1,7 +1,6 @@
 "use strict";
 var Cart = (function () {
     function Cart() {
-        this.referenceNumber = '';
         this.items = [];
         this.totalCart = 0.0;
         this.discount = 0.0;

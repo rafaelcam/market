@@ -88,4 +88,16 @@ public class Customer implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

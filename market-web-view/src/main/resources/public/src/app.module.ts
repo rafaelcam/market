@@ -18,6 +18,9 @@ import {CheckoutInfoComponent} from "./checkout/checkout.info.component";
 import {CustomerService} from "./customer/customer.service";
 import {CheckoutPaymentComponent} from "./checkout/checkout.payment.component";
 import {PaymentService} from "./payment/payment.service";
+import {ProductService} from "./product/product.service";
+import {OrderService} from "./order/order.service";
+import {OrderButtonComponent} from "./order/order.button.component";
 
 
 @NgModule({
@@ -36,14 +39,17 @@ import {PaymentService} from "./payment/payment.service";
     CheckoutCartComponent,
     CheckoutWizardComponent,
     CheckoutInfoComponent,
-    CheckoutPaymentComponent
+    CheckoutPaymentComponent,
+    OrderButtonComponent
   ],
   providers: [
     EmailService,
     CartService,
     ItemCartService,
     CustomerService,
-    PaymentService
+    PaymentService,
+    ProductService,
+    OrderService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -27,6 +27,9 @@ var checkout_info_component_1 = require("./checkout/checkout.info.component");
 var customer_service_1 = require("./customer/customer.service");
 var checkout_payment_component_1 = require("./checkout/checkout.payment.component");
 var payment_service_1 = require("./payment/payment.service");
+var product_service_1 = require("./product/product.service");
+var order_service_1 = require("./order/order.service");
+var order_button_component_1 = require("./order/order.button.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -49,14 +52,17 @@ AppModule = __decorate([
             checkout_cart_component_1.CheckoutCartComponent,
             checkout_wizard_component_1.CheckoutWizardComponent,
             checkout_info_component_1.CheckoutInfoComponent,
-            checkout_payment_component_1.CheckoutPaymentComponent
+            checkout_payment_component_1.CheckoutPaymentComponent,
+            order_button_component_1.OrderButtonComponent
         ],
         providers: [
             email_service_1.EmailService,
             cart_service_1.CartService,
             item_cart_service_1.ItemCartService,
             customer_service_1.CustomerService,
-            payment_service_1.PaymentService
+            payment_service_1.PaymentService,
+            product_service_1.ProductService,
+            order_service_1.OrderService
         ],
         bootstrap: [app_component_1.AppComponent]
     }),

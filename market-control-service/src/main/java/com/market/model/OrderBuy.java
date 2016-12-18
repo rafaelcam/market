@@ -16,15 +16,15 @@ public class OrderBuy implements Serializable {
     private String number;
 
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Cart cart;
 
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Customer customer;
 
     @JoinColumn(name = "payment_id", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Payment payment;
 
     public OrderBuy() {
@@ -75,5 +75,16 @@ public class OrderBuy implements Serializable {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderBuy{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", cart=" + cart +
+                ", customer=" + customer +
+                ", payment=" + payment +
+                '}';
     }
 }
