@@ -16,24 +16,31 @@ public class MoipService implements IMoipService {
     @Autowired
     API moip;
 
-    public void integrateWithMoip(OrderWrapper orderWrapper) {
+    @Override
+    public void integrateWithMoip(OrderWrapper orderWrapper) throws Exception {
         CustomerRequest customerRequest = createCustomer(orderWrapper.getCustomerWrapper());
         Order order = createOrder(orderWrapper, customerRequest);
     }
 
-    public CustomerRequest createCustomer(CustomerWrapper customerWrapper) {
+    public CustomerRequest createCustomer(CustomerWrapper customerWrapper) throws Exception {
         return new CustomerRequest()
                 .ownId(customerWrapper.getId().toString())
                 .fullname(customerWrapper.getName())
                 .email(customerWrapper.getEmail())
-                .phone(new PhoneRequest().setNumber(customerWrapper.getPhone()));
+                .phone(createPhone(customerWrapper));
     }
 
-    public ShippingAddressRequest createAddress(CustomerWrapper customerWrapper) {
+    private PhoneRequest createPhone(CustomerWrapper customerWrapper) throws Exception {
+        return new PhoneRequest()
+                .setAreaCode("67")
+                .setNumber(customerWrapper.getPhone());
+    }
+
+    public ShippingAddressRequest createAddress(CustomerWrapper customerWrapper) throws Exception {
         return new ShippingAddressRequest().street(customerWrapper.getAddress());
     }
 
-    public Order createOrder(OrderWrapper orderWrapper, CustomerRequest customerRequest) {
+    public Order createOrder(OrderWrapper orderWrapper, CustomerRequest customerRequest) throws Exception {
         OrderRequest orderRequest = new OrderRequest()
                 .ownId(orderWrapper.getId().toString())
                 .addItem("Descrição do pedido", 1, "Mais info...", 10000)
@@ -42,19 +49,27 @@ public class MoipService implements IMoipService {
         return moip.order().create(orderRequest);
     }
 
-    public Payment createPayment(PaymentWrapper paymentWrapper) {
-
-        PaymentRequest paymentRequest = new PaymentRequest().fundingInstrument(createFundingInstrument(paymentWrapper));
+    public Payment createPayment(PaymentWrapper paymentWrapper, Order order, CustomerWrapper customerWrapper) throws Exception {
+        PaymentRequest paymentRequest = new PaymentRequest()
+                .orderId(order.getId())
+                .fundingInstrument(createFundingInstrument(paymentWrapper, customerWrapper));
 
         return null;
     }
 
-    public FundingInstrumentRequest createFundingInstrument(PaymentWrapper paymentWrapper) {
-        return new FundingInstrumentRequest().creditCard(createCreditCard(paymentWrapper));
+    public FundingInstrumentRequest createFundingInstrument(PaymentWrapper paymentWrapper, CustomerWrapper customerWrapper) throws Exception {
+        return new FundingInstrumentRequest().creditCard(createCreditCard(paymentWrapper, customerWrapper));
     }
 
-    public CreditCardRequest createCreditCard(PaymentWrapper paymentWrapper) {
-        return new CreditCardRequest();
+    public CreditCardRequest createCreditCard(PaymentWrapper paymentWrapper, CustomerWrapper customerWrapper) throws Exception {
+        return new CreditCardRequest()
+                .hash(paymentWrapper.getHash())
+                .holder(new HolderRequest()
+                            .birthdate("1988-10-10")
+                            .fullname(paymentWrapper.getName())
+                            .phone(createPhone(customerWrapper))
+                            .taxDocument(TaxDocumentRequest.cpf("333.333.333-33"))
+                );
     }
 
 }
