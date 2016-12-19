@@ -36,10 +36,14 @@ public class Payment implements Serializable {
     @NotEmpty(message = "error.payment.code.notempty")
     private String securityCode;
 
-    @NotNull(message = "error.payment.installments.notempty")
+    @NotNull(message = "error.payment.installments.notnull")
     @Max(value = 10, message = "error.payment.installments.limit")
     @Min(value = 1, message = "error.payment.installments.limit")
     private Integer installments;
+
+    @NotEmpty(message = "error.payment.hash.notempty")
+    @Lob
+    private String hash;
 
     public Payment() {
     }
@@ -106,6 +110,14 @@ public class Payment implements Serializable {
 
     public void setInstallments(Integer installments) {
         this.installments = installments;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     @Override

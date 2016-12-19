@@ -5,6 +5,7 @@ export class Payment {
     yearExpiration: string;
     securityCode: string;
     installments: number;
+    hash: string;
 
     constructor() {
         this.name = '';
@@ -13,5 +14,6 @@ export class Payment {
         this.yearExpiration = '';
         this.securityCode = '';
         this.installments = 1;
+        this.hash = '';
     }
 }

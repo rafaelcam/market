@@ -25,7 +25,12 @@ var OrderService = (function () {
         this.url = 'http://localhost:8081/';
     }
     OrderService.prototype.sendOrder = function () {
+        if (!this.paymentService.encryptCard()) {
+            this.messageService.loadErrorMessages([{ message: "Cartão de credito inválido, verifique os dados digitados." }]);
+            return;
+        }
         this.makeOrder();
+        console.log("Hash: " + this.order.payment.hash);
         this.validateAndSendOrder();
     };
     OrderService.prototype.validateAndSendOrder = function () {

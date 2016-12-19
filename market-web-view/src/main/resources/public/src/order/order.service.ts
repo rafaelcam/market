@@ -19,7 +19,13 @@ export class OrderService {
                 private paymentService: PaymentService) { }
 
     sendOrder(): void {
+        if(!this.paymentService.encryptCard()) {
+            this.messageService.loadErrorMessages([{message: "Cartão de credito inválido, verifique os dados digitados."}]);
+            return;
+        }
+
         this.makeOrder();
+        console.log("Hash: "+this.order.payment.hash)
         this.validateAndSendOrder();
     }
 

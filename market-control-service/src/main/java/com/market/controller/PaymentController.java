@@ -1,6 +1,5 @@
 package com.market.controller;
 
-import com.market.model.Customer;
 import com.market.model.Payment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
