@@ -1,45 +1,26 @@
 package com.market.wrapper;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "payment")
 public class PaymentWrapper implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "error.payment.name.notempty")
     private String name;
 
-    @NotEmpty(message = "error.payment.number.notempty")
     private String number;
 
-    @Column(name = "month_expiration")
-    @NotEmpty(message = "error.payment.month.notempty")
     private String monthExpiration;
 
-    @Column(name = "year_expiration")
-    @NotEmpty(message = "error.payment.year.notempty")
     private String yearExpiration;
 
-    @Column(name = "security_code")
-    @NotEmpty(message = "error.payment.code.notempty")
     private String securityCode;
 
-    @NotNull(message = "error.payment.installments.notempty")
-    @Max(value = 10, message = "error.payment.installments.limit")
-    @Min(value = 1, message = "error.payment.installments.limit")
     private Integer installments;
+
+    private String hash;
 
     public PaymentWrapper() {
     }
@@ -106,6 +87,14 @@ public class PaymentWrapper implements Serializable {
 
     public void setInstallments(Integer installments) {
         this.installments = installments;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     @Override
