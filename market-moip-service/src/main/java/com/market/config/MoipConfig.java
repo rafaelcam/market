@@ -26,7 +26,7 @@ public class MoipConfig {
     }
 
     private Client getClient() {
-        return new Client(endpoint, getAuthentication());
+        return new Client(Client.SANDBOX, getAuthentication());
     }
 
     private Authentication getAuthentication() {

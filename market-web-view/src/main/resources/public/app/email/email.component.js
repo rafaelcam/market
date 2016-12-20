@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var router_1 = require("@angular/router");
 var email_service_1 = require("./email.service");
 var email_model_1 = require("./email.model");
@@ -101,17 +101,14 @@ var EmailComponent = (function () {
             + "class=\"btn btn-sm btn-danger m-r-5\" onclick=\"window.angularComponentRef.component.viewDelete(" + id + ");\"><i class=\"fa fa-times\"></i></a>"
             + "</div>";
     };
+    EmailComponent = __decorate([
+        core_1.Component({
+            selector: 'email',
+            templateUrl: 'partials/email/envia.html'
+        }), 
+        __metadata('design:paramtypes', [email_service_1.EmailService, core_1.ElementRef, core_1.NgZone, router_1.Router])
+    ], EmailComponent);
     return EmailComponent;
 }());
-EmailComponent = __decorate([
-    core_1.Component({
-        selector: 'email',
-        templateUrl: 'partials/email/envia.html'
-    }),
-    __metadata("design:paramtypes", [email_service_1.EmailService,
-        core_1.ElementRef,
-        core_1.NgZone,
-        router_1.Router])
-], EmailComponent);
 exports.EmailComponent = EmailComponent;
 //# sourceMappingURL=email.component.js.map

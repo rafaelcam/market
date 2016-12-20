@@ -1,6 +1,7 @@
 package com.market.wrapper;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 public class CustomerWrapper implements Serializable {
@@ -13,18 +14,27 @@ public class CustomerWrapper implements Serializable {
 
     private String email;
 
+    private String cpf;
+
+    private String areaCode;
+
     private String phone;
 
     private String address;
 
+    private Date dateBirth;
+
     public CustomerWrapper() {
     }
 
-    public CustomerWrapper(String name, String email, String phone, String address) {
+    public CustomerWrapper(String name, String email, String cpf, String areaCode, String phone, String address, Date dateBirth) {
         this.name = name;
         this.email = email;
+        this.cpf = cpf;
+        this.areaCode = areaCode;
         this.phone = phone;
         this.address = address;
+        this.dateBirth = dateBirth;
     }
 
     public Long getId() {
@@ -51,6 +61,22 @@ public class CustomerWrapper implements Serializable {
         this.email = email;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -67,9 +93,17 @@ public class CustomerWrapper implements Serializable {
         this.address = address;
     }
 
+    public Date getDateBirth() {
+        return dateBirth;
+    }
+
+    public void setDateBirth(Date dateBirth) {
+        this.dateBirth = dateBirth;
+    }
+
     @Override
     public String toString() {
-        return "CustomerWrapper{" +
+        return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

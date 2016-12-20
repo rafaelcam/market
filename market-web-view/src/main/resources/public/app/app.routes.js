@@ -1,6 +1,6 @@
 "use strict";
-var router_1 = require("@angular/router");
-var home_component_1 = require("./home/home.component");
+var router_1 = require('@angular/router');
+var home_component_1 = require('./home/home.component');
 var email_component_1 = require("./email/email.component");
 var product_list_component_1 = require("./product/product.list.component");
 var checkout_cart_component_1 = require("./checkout/checkout.cart.component");

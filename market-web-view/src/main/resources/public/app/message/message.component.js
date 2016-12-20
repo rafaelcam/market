@@ -17,14 +17,14 @@ var MessageComponent = (function () {
     MessageComponent.prototype.clearMessages = function () {
         this.messageService.clearMessages();
     };
+    MessageComponent = __decorate([
+        core_1.Component({
+            selector: 'messages',
+            templateUrl: '../partials/message/messages.html'
+        }), 
+        __metadata('design:paramtypes', [message_service_1.MessageService])
+    ], MessageComponent);
     return MessageComponent;
 }());
-MessageComponent = __decorate([
-    core_1.Component({
-        selector: 'messages',
-        templateUrl: '../partials/message/messages.html'
-    }),
-    __metadata("design:paramtypes", [message_service_1.MessageService])
-], MessageComponent);
 exports.MessageComponent = MessageComponent;
 //# sourceMappingURL=message.component.js.map

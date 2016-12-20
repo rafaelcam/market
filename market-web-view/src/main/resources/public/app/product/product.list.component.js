@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var cart_service_1 = require("../cart/cart.service");
 var product_service_1 = require("./product.service");
 var ProductListComponent = (function () {
@@ -31,14 +31,14 @@ var ProductListComponent = (function () {
             console.log('Ocorreu um erro ao tentar buscar os produtos.');
         });
     };
+    ProductListComponent = __decorate([
+        core_1.Component({
+            selector: 'product-list',
+            templateUrl: '../partials/product/list.html'
+        }), 
+        __metadata('design:paramtypes', [cart_service_1.CartService, product_service_1.ProductService])
+    ], ProductListComponent);
     return ProductListComponent;
 }());
-ProductListComponent = __decorate([
-    core_1.Component({
-        selector: 'product-list',
-        templateUrl: '../partials/product/list.html'
-    }),
-    __metadata("design:paramtypes", [cart_service_1.CartService, product_service_1.ProductService])
-], ProductListComponent);
 exports.ProductListComponent = ProductListComponent;
 //# sourceMappingURL=product.list.component.js.map

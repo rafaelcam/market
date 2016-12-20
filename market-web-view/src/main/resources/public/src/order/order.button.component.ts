@@ -9,7 +9,7 @@ export class OrderButtonComponent {
     constructor(private orderService: OrderService) { }
 
     sendOrder(): void {
-        this.orderService.sendOrder();
+        this.orderService.checkout();
     }
 
 }

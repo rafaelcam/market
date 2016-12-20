@@ -17,15 +17,17 @@ var CheckoutInfoComponent = (function () {
         this.cartService = cartService;
         this.info = 'info';
     }
+    CheckoutInfoComponent.prototype.mostraData = function () {
+        console.log("Data: " + this.customerService.customer.dateBirth);
+    };
+    CheckoutInfoComponent = __decorate([
+        core_1.Component({
+            selector: 'checkout-info',
+            templateUrl: '../partials/checkout/checkout-info.html'
+        }), 
+        __metadata('design:paramtypes', [customer_service_1.CustomerService, cart_service_1.CartService])
+    ], CheckoutInfoComponent);
     return CheckoutInfoComponent;
 }());
-CheckoutInfoComponent = __decorate([
-    core_1.Component({
-        selector: 'checkout-info',
-        templateUrl: '../partials/checkout/checkout-info.html'
-    }),
-    __metadata("design:paramtypes", [customer_service_1.CustomerService,
-        cart_service_1.CartService])
-], CheckoutInfoComponent);
 exports.CheckoutInfoComponent = CheckoutInfoComponent;
 //# sourceMappingURL=checkout.info.component.js.map

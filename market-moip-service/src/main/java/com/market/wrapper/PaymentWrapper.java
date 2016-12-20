@@ -25,12 +25,13 @@ public class PaymentWrapper implements Serializable {
     public PaymentWrapper() {
     }
 
-    public PaymentWrapper(String name, String number, String monthExpiration, String yearExpiration, String securityCode) {
+    public PaymentWrapper(String name, String number, String monthExpiration, String yearExpiration, String securityCode, Integer installments) {
         this.name = name;
         this.number = number;
         this.monthExpiration = monthExpiration;
         this.yearExpiration = yearExpiration;
         this.securityCode = securityCode;
+        this.installments = installments;
     }
 
     public Long getId() {

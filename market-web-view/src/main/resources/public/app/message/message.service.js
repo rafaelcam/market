@@ -19,11 +19,11 @@ var MessageService = (function () {
     MessageService.prototype.clearMessages = function () {
         this.messages = [];
     };
+    MessageService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], MessageService);
     return MessageService;
 }());
-MessageService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], MessageService);
 exports.MessageService = MessageService;
 //# sourceMappingURL=message.service.js.map

@@ -1,9 +1,13 @@
 package com.market.service;
 
+import br.com.moip.request.OrderRequest;
+import br.com.moip.request.PaymentRequest;
 import br.com.moip.resource.Order;
-import com.market.wrapper.OrderWrapper;
+import br.com.moip.resource.Payment;
 
 public interface IMoipService {
 
-    public void integrateWithMoip(OrderWrapper orderWrapper) throws Exception;
+    Order createOrder(OrderRequest orderRequest) throws Exception;
+
+    Payment createPayment(PaymentRequest paymentRequest) throws Exception;
 }

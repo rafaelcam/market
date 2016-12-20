@@ -15,16 +15,16 @@ var OrderButtonComponent = (function () {
         this.orderService = orderService;
     }
     OrderButtonComponent.prototype.sendOrder = function () {
-        this.orderService.sendOrder();
+        this.orderService.checkout();
     };
+    OrderButtonComponent = __decorate([
+        core_1.Component({
+            selector: 'order-button',
+            templateUrl: '../partials/order/order-button.html'
+        }), 
+        __metadata('design:paramtypes', [order_service_1.OrderService])
+    ], OrderButtonComponent);
     return OrderButtonComponent;
 }());
-OrderButtonComponent = __decorate([
-    core_1.Component({
-        selector: 'order-button',
-        templateUrl: '../partials/order/order-button.html'
-    }),
-    __metadata("design:paramtypes", [order_service_1.OrderService])
-], OrderButtonComponent);
 exports.OrderButtonComponent = OrderButtonComponent;
 //# sourceMappingURL=order.button.component.js.map

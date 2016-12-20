@@ -18,14 +18,18 @@ export class OrderService {
                 private customerService: CustomerService,
                 private paymentService: PaymentService) { }
 
-    sendOrder(): void {
+    checkout(): void {
         if(!this.paymentService.encryptCard()) {
-            this.messageService.loadErrorMessages([{message: "Cartão de credito inválido, verifique os dados digitados."}]);
+            this.messageService.loadErrorMessages([{message: "Cartão de crédito inválido, verifique os dados digitados."}]);
+            return;
+        }
+
+        if(!this.validAndformatDate()) {
+            this.messageService.loadErrorMessages([{message: "Data de Nascimento inválida, verifique os dados digitados."}]);
             return;
         }
 
         this.makeOrder();
-        console.log("Hash: "+this.order.payment.hash)
         this.validateAndSendOrder();
     }
 
@@ -88,5 +92,23 @@ export class OrderService {
                 this.customerService.customer,
                 this.paymentService.payment
             );
+    }
+
+    private validAndformatDate(): boolean {
+        var date = this.customerService.customer.dateBirth;
+
+        try {
+            var parts = this.customerService.customer.dateBirth.split('/');
+
+            if(parts.length !== 3) {
+                throw new RangeError();
+            }
+
+            this.customerService.customer.dateBirth = parts[2]+'-'+parts[1]+'-'+parts[0];
+            return true;
+        }
+        catch (e){
+            return false;
+        }
     }
 }

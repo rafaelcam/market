@@ -25,14 +25,14 @@ var CheckoutCartComponent = (function () {
     CheckoutCartComponent.prototype.applyDiscount = function () {
         this.cartService.calculateDiscount(this.codeDiscount);
     };
+    CheckoutCartComponent = __decorate([
+        core_1.Component({
+            selector: 'checkout-cart',
+            templateUrl: '../partials/checkout/checkout-cart.html'
+        }), 
+        __metadata('design:paramtypes', [cart_service_1.CartService])
+    ], CheckoutCartComponent);
     return CheckoutCartComponent;
 }());
-CheckoutCartComponent = __decorate([
-    core_1.Component({
-        selector: 'checkout-cart',
-        templateUrl: '../partials/checkout/checkout-cart.html'
-    }),
-    __metadata("design:paramtypes", [cart_service_1.CartService])
-], CheckoutCartComponent);
 exports.CheckoutCartComponent = CheckoutCartComponent;
 //# sourceMappingURL=checkout.cart.component.js.map

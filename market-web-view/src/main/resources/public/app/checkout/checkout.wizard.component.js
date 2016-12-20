@@ -35,18 +35,18 @@ var CheckoutWizardComponent = (function () {
                 break;
         }
     };
+    __decorate([
+        core_1.Input('activeSection'), 
+        __metadata('design:type', String)
+    ], CheckoutWizardComponent.prototype, "activeSection", void 0);
+    CheckoutWizardComponent = __decorate([
+        core_1.Component({
+            selector: 'checkout-wizard',
+            templateUrl: '../partials/checkout/checkout-wizard.html'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], CheckoutWizardComponent);
     return CheckoutWizardComponent;
 }());
-__decorate([
-    core_1.Input('activeSection'),
-    __metadata("design:type", String)
-], CheckoutWizardComponent.prototype, "activeSection", void 0);
-CheckoutWizardComponent = __decorate([
-    core_1.Component({
-        selector: 'checkout-wizard',
-        templateUrl: '../partials/checkout/checkout-wizard.html'
-    }),
-    __metadata("design:paramtypes", [])
-], CheckoutWizardComponent);
 exports.CheckoutWizardComponent = CheckoutWizardComponent;
 //# sourceMappingURL=checkout.wizard.component.js.map

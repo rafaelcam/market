@@ -35,43 +35,43 @@ var message_component_1 = require("./message/message.component");
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                app_routes_1.routing
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                home_component_1.HomeComponent,
+                email_component_1.EmailComponent,
+                product_list_component_1.ProductListComponent,
+                cart_component_1.CartComponent,
+                checkout_cart_component_1.CheckoutCartComponent,
+                checkout_wizard_component_1.CheckoutWizardComponent,
+                checkout_info_component_1.CheckoutInfoComponent,
+                checkout_payment_component_1.CheckoutPaymentComponent,
+                order_button_component_1.OrderButtonComponent,
+                message_component_1.MessageComponent
+            ],
+            providers: [
+                { provide: core_1.LOCALE_ID, useValue: "pt-BR" },
+                email_service_1.EmailService,
+                cart_service_1.CartService,
+                item_cart_service_1.ItemCartService,
+                customer_service_1.CustomerService,
+                payment_service_1.PaymentService,
+                product_service_1.ProductService,
+                order_service_1.OrderService,
+                message_service_1.MessageService
+            ],
+            bootstrap: [app_component_1.AppComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            app_routes_1.routing
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            home_component_1.HomeComponent,
-            email_component_1.EmailComponent,
-            product_list_component_1.ProductListComponent,
-            cart_component_1.CartComponent,
-            checkout_cart_component_1.CheckoutCartComponent,
-            checkout_wizard_component_1.CheckoutWizardComponent,
-            checkout_info_component_1.CheckoutInfoComponent,
-            checkout_payment_component_1.CheckoutPaymentComponent,
-            order_button_component_1.OrderButtonComponent,
-            message_component_1.MessageComponent
-        ],
-        providers: [
-            { provide: core_1.LOCALE_ID, useValue: "pt-BR" },
-            email_service_1.EmailService,
-            cart_service_1.CartService,
-            item_cart_service_1.ItemCartService,
-            customer_service_1.CustomerService,
-            payment_service_1.PaymentService,
-            product_service_1.ProductService,
-            order_service_1.OrderService,
-            message_service_1.MessageService
-        ],
-        bootstrap: [app_component_1.AppComponent]
-    }),
-    __metadata("design:paramtypes", [])
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

@@ -3,13 +3,10 @@ package com.market.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- *
- * @author JRafael
- */
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
@@ -26,20 +23,32 @@ public class Customer implements Serializable {
     @NotEmpty(message = "error.customer.email.notempty")
     private String email;
 
+    @NotEmpty(message = "error.customer.cpf.notempty")
+    private String cpf;
+
+    @NotEmpty(message = "error.customer.areacode.notempty")
+    private String areaCode;
+
     @NotEmpty(message = "error.customer.phone.notempty")
     private String phone;
 
     @NotEmpty(message = "error.customer.address.notempty")
     private String address;
 
+    @NotNull(message = "error.customer.datebirth.notempty")
+    private Date dateBirth;
+
     public Customer() {
     }
 
-    public Customer(String name, String email, Date birthDate, String phone, String address) {
+    public Customer(String name, String email, String cpf, String areaCode, String phone, String address, Date dateBirth) {
         this.name = name;
         this.email = email;
+        this.cpf = cpf;
+        this.areaCode = areaCode;
         this.phone = phone;
         this.address = address;
+        this.dateBirth = dateBirth;
     }
 
     public Long getId() {
@@ -66,6 +75,22 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -80,6 +105,14 @@ public class Customer implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Date getDateBirth() {
+        return dateBirth;
+    }
+
+    public void setDateBirth(Date dateBirth) {
+        this.dateBirth = dateBirth;
     }
 
     @Override

@@ -18,11 +18,11 @@ var ProductService = (function () {
     ProductService.prototype.findAll = function () {
         return this.http.get(this.url + "product/").map(function (res) { return res.json(); });
     };
+    ProductService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], ProductService);
     return ProductService;
 }());
-ProductService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map

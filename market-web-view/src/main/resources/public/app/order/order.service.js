@@ -24,13 +24,16 @@ var OrderService = (function () {
         this.paymentService = paymentService;
         this.url = 'http://localhost:8081/';
     }
-    OrderService.prototype.sendOrder = function () {
+    OrderService.prototype.checkout = function () {
         if (!this.paymentService.encryptCard()) {
-            this.messageService.loadErrorMessages([{ message: "Cartão de credito inválido, verifique os dados digitados." }]);
+            this.messageService.loadErrorMessages([{ message: "Cartão de crédito inválido, verifique os dados digitados." }]);
+            return;
+        }
+        if (!this.validAndformatDate()) {
+            this.messageService.loadErrorMessages([{ message: "Data de Nascimento inválida, verifique os dados digitados." }]);
             return;
         }
         this.makeOrder();
-        console.log("Hash: " + this.order.payment.hash);
         this.validateAndSendOrder();
     };
     OrderService.prototype.validateAndSendOrder = function () {
@@ -85,15 +88,25 @@ var OrderService = (function () {
     OrderService.prototype.makeOrder = function () {
         this.order = new order_model_1.Order(this.cartService.cart, this.customerService.customer, this.paymentService.payment);
     };
+    OrderService.prototype.validAndformatDate = function () {
+        var date = this.customerService.customer.dateBirth;
+        try {
+            var parts = this.customerService.customer.dateBirth.split('/');
+            if (parts.length !== 3) {
+                throw new RangeError();
+            }
+            this.customerService.customer.dateBirth = parts[2] + '-' + parts[1] + '-' + parts[0];
+            return true;
+        }
+        catch (e) {
+            return false;
+        }
+    };
+    OrderService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [message_service_1.MessageService, http_1.Http, cart_service_1.CartService, customer_service_1.CustomerService, payment_service_1.PaymentService])
+    ], OrderService);
     return OrderService;
 }());
-OrderService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [message_service_1.MessageService,
-        http_1.Http,
-        cart_service_1.CartService,
-        customer_service_1.CustomerService,
-        payment_service_1.PaymentService])
-], OrderService);
 exports.OrderService = OrderService;
 //# sourceMappingURL=order.service.js.map

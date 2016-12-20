@@ -14,11 +14,11 @@ var CustomerService = (function () {
     function CustomerService() {
         this.customer = new customer_model_1.Customer();
     }
+    CustomerService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], CustomerService);
     return CustomerService;
 }());
-CustomerService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], CustomerService);
 exports.CustomerService = CustomerService;
 //# sourceMappingURL=customer.service.js.map

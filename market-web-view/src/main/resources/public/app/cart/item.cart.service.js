@@ -23,11 +23,11 @@ var ItemCartService = (function () {
     ItemCartService.prototype.calculateTotalItem = function (item) {
         item.totalItem = item.product.price * item.quantity;
     };
+    ItemCartService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], ItemCartService);
     return ItemCartService;
 }());
-ItemCartService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], ItemCartService);
 exports.ItemCartService = ItemCartService;
 //# sourceMappingURL=item.cart.service.js.map

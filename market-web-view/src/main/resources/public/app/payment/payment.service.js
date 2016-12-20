@@ -39,11 +39,11 @@ var PaymentService = (function () {
             return false;
         }
     };
+    PaymentService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], PaymentService);
     return PaymentService;
 }());
-PaymentService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], PaymentService);
 exports.PaymentService = PaymentService;
 //# sourceMappingURL=payment.service.js.map
