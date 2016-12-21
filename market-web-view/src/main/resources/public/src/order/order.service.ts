@@ -6,17 +6,25 @@ import {PaymentService} from "../payment/payment.service";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs";
 import {MessageService} from "../message/message.service";
+import {Cart} from "../cart/cart.model";
+import {Customer} from "../customer/customer.model";
+import {Payment} from "../payment/payment.model";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class OrderService {
     private url = 'http://localhost:8081/';
     order: Order;
+    orderComplete: Order;
 
     constructor(private messageService: MessageService,
                 private http: Http,
                 private cartService: CartService,
                 private customerService: CustomerService,
-                private paymentService: PaymentService) { }
+                private paymentService: PaymentService,
+                private router: Router) {
+        this.orderComplete = new Order(new Cart(), new Customer(), new Payment());
+    }
 
     checkout(): void {
         if(!this.paymentService.encryptCard()) {
@@ -63,11 +71,19 @@ export class OrderService {
     private sendOrderRequest(): void {
         this.callSendOrderRequest()
             .subscribe(res => {
-                this.order = res;
+                this.orderComplete = res;
+                this.clearData();
+                this.router.navigate(['checkout/complete']);
             }, error => {
                 console.log(error.json());
                 this.messageService.loadErrorMessages(error.json());
             });
+    }
+
+    private clearData(): void {
+        this.paymentService.clearPayment();
+        this.cartService.clearCart();
+        this.customerService.clearCustomer();
     }
 
     private callValidateOrder(): Observable<any> {
@@ -84,6 +100,10 @@ export class OrderService {
 
     private callSendOrderRequest(): Observable<any> {
         return this.http.post(this.url+"orderbuy/", this.order).map(res => res.json());
+    }
+
+    public findById(id: number): Observable<any> {
+        return this.http.get(this.url+"orderbuy/"+id).map(res => res.json());
     }
 
     private makeOrder(): void {

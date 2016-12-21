@@ -1,6 +1,7 @@
 package com.market.service;
 
 
+import com.market.domain.StatusOrder;
 import com.market.integration.MoipIntegration;
 import com.market.model.OrderBuy;
 import com.market.repository.OrderBuyRepository;
@@ -20,12 +21,24 @@ public class OrderBuyService implements IOrderBuyService {
     @Autowired
     MoipIntegration moipIntegration;
 
+    @Override
     @Transactional
-    public OrderBuy save(OrderBuy orderBuy) throws Exception {
-        itemCartService.loadCartInItemsCart(orderBuy.getCart());
-        orderBuy = repository.save(orderBuy);
+    public OrderBuy create(OrderBuy orderBuy) throws Exception {
+        save(orderBuy);
         moipIntegration.integrate(orderBuy);
+        repository.save(orderBuy);
 
         return orderBuy;
+    }
+
+    @Override
+    public OrderBuy findById(Long id) throws Exception {
+        return repository.findOne(id);
+    }
+
+    private void save(OrderBuy orderBuy) throws Exception {
+        orderBuy.setStatusOrder(StatusOrder.EM_PROCESSAMENTO);
+        itemCartService.loadCartInItemsCart(orderBuy.getCart());
+        orderBuy = repository.save(orderBuy);
     }
 }

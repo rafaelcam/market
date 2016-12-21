@@ -1,0 +1,88 @@
+<!-- BEGIN #checkout-cart -->
+<div class="section-container" id="checkout-cart">
+    <!-- BEGIN container -->
+    <div class="container">
+
+        <!-- BEGIN checkout -->
+        <div class="checkout">
+            <form action="checkout_info.html" method="POST" name="form_checkout">
+                <!-- BEGIN checkout-header -->
+                <div class="checkout-header">
+                    <!-- BEGIN row -->
+                    <div class="row">
+                        <!-- BEGIN col-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="step active">
+                                <a routerLink="/checkout/cart">
+                                    <div class="info">
+                                        <div class="title">Resumo do pedido</div>
+                                        <div class="desc">Confira o status do seu pedido.</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- END col-3 -->
+                    </div>
+                    <!-- END row -->
+                </div>
+                <!-- END checkout-header -->
+
+                <!-- BEGIN checkout-body -->
+                <div class="checkout-body">
+                    <!-- BEGIN checkout-message -->
+                    <div class="checkout-message">
+                        <div class="table-responsive2">
+                            <table class="table table-payment-summary">
+                                <tbody>
+                                <tr>
+                                    <td class="field">Status</td>
+                                    <td class="value">{{order.statusOrder}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Número do Pedido</td>
+                                    <td class="value">{{order.id}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Nome</td>
+                                    <td class="value">{{order.customer.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Itens</td>
+                                    <td class="value product-summary" >
+                                        <div class="product-summary-info" *ngFor="let item of order.cart.items; let i = index; trackBy: trackByFn">
+                                            <div class="title">{{ item.product.name }} ({{ item.quantity }})</div>
+                                            <div class="desc">{{ item.product.description }}</div>
+                                            <div class="desc">{{ item.product.price | currency:'BRL':true:'1.2-2' }}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Total Carrinho</td>
+                                    <td class="value">{{ order.cart.totalCart | currency:'BRL':true:'1.2-2' }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Desconto</td>
+                                    <td class="value">{{ order.cart.discount | currency:'BRL':true:'1.2-2' }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Total</td>
+                                    <td class="value">{{ order.cart.totalCart-order.cart.discount | currency:'BRL':true:'1.2-2' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END checkout-message -->
+                </div>
+                <!-- END checkout-body -->
+                <!-- BEGIN checkout-footer -->
+                <div class="checkout-footer text-center">
+                </div>
+                <!-- END checkout-footer -->
+            </form>
+        </div>
+        <!-- END checkout -->
+    </div>
+    <!-- END container -->
+</div>
+<!-- END #checkout-cart -->

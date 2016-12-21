@@ -22,6 +22,8 @@ import {OrderService} from "./order/order.service";
 import {OrderButtonComponent} from "./order/order.button.component";
 import {MessageService} from "./message/message.service";
 import {MessageComponent} from "./message/message.component";
+import {CheckoutCompleteComponent} from "./checkout/checkout.complete.component";
+import {StatusOrderComponent} from "./status/status.order.component";
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import {MessageComponent} from "./message/message.component";
     CheckoutInfoComponent,
     CheckoutPaymentComponent,
     OrderButtonComponent,
-    MessageComponent
+    MessageComponent,
+    CheckoutCompleteComponent,
+    StatusOrderComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "pt-BR" },

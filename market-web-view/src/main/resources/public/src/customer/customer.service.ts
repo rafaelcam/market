@@ -9,4 +9,8 @@ export class CustomerService {
     constructor() {
         this.customer = new Customer();
     }
+
+    clearCustomer(): void {
+        this.customer = new Customer();
+    }
 }

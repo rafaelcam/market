@@ -1,5 +1,7 @@
 package com.market.model;
 
+import com.market.domain.StatusOrder;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -15,6 +17,9 @@ public class OrderBuy implements Serializable {
     private Long id;
 
     private String numberOrder;
+
+    @Enumerated(EnumType.STRING)
+    private StatusOrder statusOrder;
 
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -34,8 +39,9 @@ public class OrderBuy implements Serializable {
     public OrderBuy() {
     }
 
-    public OrderBuy(String numberOrder, Cart cart, Customer customer, Payment payment) {
+    public OrderBuy(String numberOrder, StatusOrder statusOrder, Cart cart, Customer customer, Payment payment) {
         this.numberOrder = numberOrder;
+        this.statusOrder = statusOrder;
         this.cart = cart;
         this.customer = customer;
         this.payment = payment;
@@ -55,6 +61,14 @@ public class OrderBuy implements Serializable {
 
     public void setNumberOrder(String numberOrder) {
         this.numberOrder = numberOrder;
+    }
+
+    public StatusOrder getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(StatusOrder statusOrder) {
+        this.statusOrder = statusOrder;
     }
 
     public Cart getCart() {
@@ -79,16 +93,5 @@ public class OrderBuy implements Serializable {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderBuy{" +
-                "id=" + id +
-                ", numberOrder='" + numberOrder + '\'' +
-                ", cart=" + cart +
-                ", customer=" + customer +
-                ", payment=" + payment +
-                '}';
     }
 }

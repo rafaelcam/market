@@ -37,4 +37,8 @@ export class PaymentService {
             return false;
         }
     }
+
+    clearPayment(): void {
+        this.payment = new Payment();
+    }
 }
