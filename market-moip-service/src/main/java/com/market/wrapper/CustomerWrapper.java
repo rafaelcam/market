@@ -37,6 +37,17 @@ public class CustomerWrapper implements Serializable {
         this.dateBirth = dateBirth;
     }
 
+    public CustomerWrapper(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.email = builder.email;
+        this.cpf = builder.cpf;
+        this.areaCode = builder.areaCode;
+        this.phone = builder.phone;
+        this.address = builder.address;
+        this.dateBirth = builder.dateBirth;
+    }
+
     public Long getId() {
         return id;
     }
@@ -110,5 +121,62 @@ public class CustomerWrapper implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public static class Builder {
+        private Long id;
+        private String name;
+        private String email;
+        private String cpf;
+        private String areaCode;
+        private String phone;
+        private String address;
+        private Date dateBirth;
+
+        public Builder() { }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder cpf(String cpf) {
+            this.cpf = cpf;
+            return this;
+        }
+
+        public Builder areaCode(String areaCode) {
+            this.areaCode = areaCode;
+            return this;
+        }
+
+        public Builder phone(String phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder dateBirth(Date dateBirth) {
+            this.dateBirth = dateBirth;
+            return this;
+        }
+
+        public CustomerWrapper build() {
+            return new CustomerWrapper(this);
+        }
     }
 }

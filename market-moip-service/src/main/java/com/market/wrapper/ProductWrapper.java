@@ -28,6 +28,12 @@ public class ProductWrapper implements Serializable {
         this.image = image;
     }
 
+    public ProductWrapper(String name, String description, BigDecimal price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }

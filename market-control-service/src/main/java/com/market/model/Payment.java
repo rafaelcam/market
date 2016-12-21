@@ -18,6 +18,8 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String numberPayment;
+
     @NotEmpty(message = "error.payment.name.notempty")
     private String name;
 
@@ -48,12 +50,15 @@ public class Payment implements Serializable {
     public Payment() {
     }
 
-    public Payment(String name, String number, String monthExpiration, String yearExpiration, String securityCode) {
+    public Payment(String numberPayment, String name, String number, String monthExpiration, String yearExpiration, String securityCode, Integer installments, String hash) {
+        this.numberPayment = numberPayment;
         this.name = name;
         this.number = number;
         this.monthExpiration = monthExpiration;
         this.yearExpiration = yearExpiration;
         this.securityCode = securityCode;
+        this.installments = installments;
+        this.hash = hash;
     }
 
     public Long getId() {
@@ -62,6 +67,14 @@ public class Payment implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNumberPayment() {
+        return numberPayment;
+    }
+
+    public void setNumberPayment(String numberPayment) {
+        this.numberPayment = numberPayment;
     }
 
     public String getName() {
@@ -124,11 +137,14 @@ public class Payment implements Serializable {
     public String toString() {
         return "Payment{" +
                 "id=" + id +
+                ", numberPayment='" + numberPayment + '\'' +
                 ", name='" + name + '\'' +
                 ", number='" + number + '\'' +
                 ", monthExpiration='" + monthExpiration + '\'' +
                 ", yearExpiration='" + yearExpiration + '\'' +
                 ", securityCode='" + securityCode + '\'' +
+                ", installments=" + installments +
+                ", hash='" + hash + '\'' +
                 '}';
     }
 }

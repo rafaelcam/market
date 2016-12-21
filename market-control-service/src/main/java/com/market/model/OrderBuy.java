@@ -2,7 +2,6 @@ package com.market.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -15,7 +14,7 @@ public class OrderBuy implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String number;
+    private String numberOrder;
 
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -35,8 +34,8 @@ public class OrderBuy implements Serializable {
     public OrderBuy() {
     }
 
-    public OrderBuy(String number, Cart cart, Customer customer, Payment payment) {
-        this.number = number;
+    public OrderBuy(String numberOrder, Cart cart, Customer customer, Payment payment) {
+        this.numberOrder = numberOrder;
         this.cart = cart;
         this.customer = customer;
         this.payment = payment;
@@ -50,12 +49,12 @@ public class OrderBuy implements Serializable {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getNumberOrder() {
+        return numberOrder;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setNumberOrder(String numberOrder) {
+        this.numberOrder = numberOrder;
     }
 
     public Cart getCart() {
@@ -86,7 +85,7 @@ public class OrderBuy implements Serializable {
     public String toString() {
         return "OrderBuy{" +
                 "id=" + id +
-                ", number='" + number + '\'' +
+                ", numberOrder='" + numberOrder + '\'' +
                 ", cart=" + cart +
                 ", customer=" + customer +
                 ", payment=" + payment +

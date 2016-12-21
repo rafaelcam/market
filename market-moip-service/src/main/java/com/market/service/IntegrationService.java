@@ -19,5 +19,8 @@ public class IntegrationService implements IIntegrationService {
     public void integrateMoip(OrderWrapper orderWrapper) throws Exception {
         Order order = orderService.createOrder(orderWrapper);
         Payment payment = paymentService.createPayment(orderWrapper, order);
+
+        orderWrapper.setNumberOrder(order.getId());
+        orderWrapper.getPaymentWrapper().setNumberPayment(payment.getId());
     }
 }

@@ -10,7 +10,7 @@ import java.util.Locale;
 @Component
 public class PriceUtil {
 
-    public Integer getNumberFormatedForMoip(BigDecimal price) {
+    public Integer formatNumberForMoip(BigDecimal price) {
         price = price.setScale(2, BigDecimal.ROUND_UP);
         String priceFormated = getDecimalFormat(2, 2).format(price).replace(".", "");
 

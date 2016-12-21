@@ -23,6 +23,12 @@ public class ItemCartWrapper implements Serializable {
     public ItemCartWrapper() {
     }
 
+    public ItemCartWrapper(int quantity, BigDecimal totalItem, ProductWrapper productWrapper) {
+        this.quantity = quantity;
+        this.totalItem = totalItem;
+        this.productWrapper = productWrapper;
+    }
+
     public ItemCartWrapper(int quantity, BigDecimal totalItem, CartWrapper cartWrapper, ProductWrapper productWrapper) {
         this.quantity = quantity;
         this.totalItem = totalItem;

@@ -10,7 +10,7 @@ public class PhoneService implements IPhoneService {
     @Override
     public PhoneRequest makePhoneRequest(CustomerWrapper customerWrapper) throws Exception {
         return new PhoneRequest()
-                .setAreaCode("67")
+                .setAreaCode(customerWrapper.getAreaCode())
                 .setNumber(customerWrapper.getPhone());
     }
 }

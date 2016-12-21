@@ -8,6 +8,8 @@ public class PaymentWrapper implements Serializable {
 
     private Long id;
 
+    private String numberPayment;
+
     private String name;
 
     private String number;
@@ -25,13 +27,24 @@ public class PaymentWrapper implements Serializable {
     public PaymentWrapper() {
     }
 
-    public PaymentWrapper(String name, String number, String monthExpiration, String yearExpiration, String securityCode, Integer installments) {
+    public PaymentWrapper(Long id, String numberPayment, String name, String number, String monthExpiration,
+                          String yearExpiration, String securityCode, Integer installments, String hash) {
+        this.id = id;
+        this.numberPayment = numberPayment;
         this.name = name;
         this.number = number;
         this.monthExpiration = monthExpiration;
         this.yearExpiration = yearExpiration;
         this.securityCode = securityCode;
         this.installments = installments;
+        this.hash = hash;
+    }
+
+    public PaymentWrapper(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.installments = builder.installments;
+        this.hash = builder.hash;
     }
 
     public Long getId() {
@@ -98,6 +111,14 @@ public class PaymentWrapper implements Serializable {
         this.hash = hash;
     }
 
+    public String getNumberPayment() {
+        return numberPayment;
+    }
+
+    public void setNumberPayment(String numberPayment) {
+        this.numberPayment = numberPayment;
+    }
+
     @Override
     public String toString() {
         return "PaymentWrapper{" +
@@ -108,5 +129,42 @@ public class PaymentWrapper implements Serializable {
                 ", yearExpiration='" + yearExpiration + '\'' +
                 ", securityCode='" + securityCode + '\'' +
                 '}';
+    }
+
+    public static class Builder {
+        private Long id;
+        private String name;
+        private String number;
+        private String monthExpiration;
+        private String yearExpiration;
+        private String securityCode;
+        private Integer installments;
+        private String hash;
+
+        public Builder() { }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder installments(Integer installments) {
+            this.installments = installments;
+            return this;
+        }
+
+        public Builder hash(String hash) {
+            this.hash = hash;
+            return this;
+        }
+
+        public PaymentWrapper build() {
+            return new PaymentWrapper(this);
+        }
     }
 }

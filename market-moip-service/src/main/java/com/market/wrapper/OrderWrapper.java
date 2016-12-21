@@ -8,7 +8,7 @@ public class OrderWrapper implements Serializable {
 
     private Long id;
 
-    private String number;
+    private String numberOrder;
 
     private CartWrapper cartWrapper;
 
@@ -19,11 +19,18 @@ public class OrderWrapper implements Serializable {
     public OrderWrapper() {
     }
 
-    public OrderWrapper(String number, CartWrapper cartWrapper, CustomerWrapper customerWrapper, PaymentWrapper paymentWrapper) {
-        this.number = number;
+    public OrderWrapper(String numberOrder, CartWrapper cartWrapper, CustomerWrapper customerWrapper, PaymentWrapper paymentWrapper) {
+        this.numberOrder = numberOrder;
         this.cartWrapper = cartWrapper;
         this.customerWrapper = customerWrapper;
         this.paymentWrapper = paymentWrapper;
+    }
+
+    public OrderWrapper(Builder builder) {
+        this.id = builder.id;
+        this.cartWrapper = builder.cart;
+        this.customerWrapper = builder.customer;
+        this.paymentWrapper = builder.payment;
     }
 
     public Long getId() {
@@ -34,12 +41,12 @@ public class OrderWrapper implements Serializable {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getNumberOrder() {
+        return numberOrder;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setNumberOrder(String numberOrder) {
+        this.numberOrder = numberOrder;
     }
 
     public CartWrapper getCartWrapper() {
@@ -70,10 +77,49 @@ public class OrderWrapper implements Serializable {
     public String toString() {
         return "OrderWrapper{" +
                 "id=" + id +
-                ", number='" + number + '\'' +
+                ", numberOrder='" + numberOrder + '\'' +
                 ", cartWrapper=" + cartWrapper +
                 ", customerWrapper=" + customerWrapper +
                 ", paymentWrapper=" + paymentWrapper +
                 '}';
+    }
+
+    public static class Builder {
+        private Long id;
+        private String number;
+        private CartWrapper cart;
+        private CustomerWrapper customer;
+        private PaymentWrapper payment;
+
+        public Builder() {}
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder number(String number) {
+            this.number = number;
+            return this;
+        }
+
+        public Builder cart(CartWrapper cart) {
+            this.cart = cart;
+            return this;
+        }
+
+        public Builder customer(CustomerWrapper customer) {
+            this.customer = customer;
+            return this;
+        }
+
+        public Builder payment(PaymentWrapper payment) {
+            this.payment = payment;
+            return this;
+        }
+
+        public OrderWrapper build() {
+            return new OrderWrapper(this);
+        }
     }
 }
