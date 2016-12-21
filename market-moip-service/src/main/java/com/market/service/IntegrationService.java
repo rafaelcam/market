@@ -21,6 +21,6 @@ public class IntegrationService implements IIntegrationService {
         Payment payment = paymentService.createPayment(orderWrapper, order);
 
         orderWrapper.setNumberOrder(order.getId());
-        orderWrapper.getPaymentWrapper().setNumberPayment(payment.getId());
+        orderWrapper.getPayment().setNumberPayment(payment.getId());
     }
 }

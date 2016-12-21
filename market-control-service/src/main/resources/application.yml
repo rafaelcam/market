@@ -14,3 +14,13 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+
+market:
+  moip:
+    service:
+      url: http://localhost:8082
+
+rest:
+  timeout:
+    connect: 20000
+    read: 20000

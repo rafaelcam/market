@@ -3,7 +3,6 @@ package com.market.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -91,7 +90,6 @@ public class ItemCart implements Serializable {
                 "id=" + id +
                 ", quantity=" + quantity +
                 ", totalItem=" + totalItem +
-                ", cart=" + cart +
                 ", product=" + product +
                 '}';
     }

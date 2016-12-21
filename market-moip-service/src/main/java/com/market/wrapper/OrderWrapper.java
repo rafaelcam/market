@@ -10,27 +10,28 @@ public class OrderWrapper implements Serializable {
 
     private String numberOrder;
 
-    private CartWrapper cartWrapper;
+    private CartWrapper cart;
 
-    private CustomerWrapper customerWrapper;
+    private CustomerWrapper customer;
 
-    private PaymentWrapper paymentWrapper;
+    private PaymentWrapper payment;
 
     public OrderWrapper() {
     }
 
-    public OrderWrapper(String numberOrder, CartWrapper cartWrapper, CustomerWrapper customerWrapper, PaymentWrapper paymentWrapper) {
+    public OrderWrapper(Long id, String numberOrder, CartWrapper cart, CustomerWrapper customer, PaymentWrapper payment) {
+        this.id = id;
         this.numberOrder = numberOrder;
-        this.cartWrapper = cartWrapper;
-        this.customerWrapper = customerWrapper;
-        this.paymentWrapper = paymentWrapper;
+        this.cart = cart;
+        this.customer = customer;
+        this.payment = payment;
     }
 
     public OrderWrapper(Builder builder) {
         this.id = builder.id;
-        this.cartWrapper = builder.cart;
-        this.customerWrapper = builder.customer;
-        this.paymentWrapper = builder.payment;
+        this.cart = builder.cart;
+        this.customer = builder.customer;
+        this.payment = builder.payment;
     }
 
     public Long getId() {
@@ -49,28 +50,28 @@ public class OrderWrapper implements Serializable {
         this.numberOrder = numberOrder;
     }
 
-    public CartWrapper getCartWrapper() {
-        return cartWrapper;
+    public CartWrapper getCart() {
+        return cart;
     }
 
-    public void setCartWrapper(CartWrapper cartWrapper) {
-        this.cartWrapper = cartWrapper;
+    public void setCart(CartWrapper cart) {
+        this.cart = cart;
     }
 
-    public CustomerWrapper getCustomerWrapper() {
-        return customerWrapper;
+    public CustomerWrapper getCustomer() {
+        return customer;
     }
 
-    public void setCustomerWrapper(CustomerWrapper customerWrapper) {
-        this.customerWrapper = customerWrapper;
+    public void setCustomer(CustomerWrapper customer) {
+        this.customer = customer;
     }
 
-    public PaymentWrapper getPaymentWrapper() {
-        return paymentWrapper;
+    public PaymentWrapper getPayment() {
+        return payment;
     }
 
-    public void setPaymentWrapper(PaymentWrapper paymentWrapper) {
-        this.paymentWrapper = paymentWrapper;
+    public void setPayment(PaymentWrapper payment) {
+        this.payment = payment;
     }
 
     @Override
@@ -78,9 +79,9 @@ public class OrderWrapper implements Serializable {
         return "OrderWrapper{" +
                 "id=" + id +
                 ", numberOrder='" + numberOrder + '\'' +
-                ", cartWrapper=" + cartWrapper +
-                ", customerWrapper=" + customerWrapper +
-                ", paymentWrapper=" + paymentWrapper +
+                ", cart=" + cart +
+                ", customer=" + customer +
+                ", payment=" + payment +
                 '}';
     }
 

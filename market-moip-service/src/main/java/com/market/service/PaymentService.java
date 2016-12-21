@@ -22,7 +22,7 @@ public class PaymentService implements IPaymentService {
     @Override
     public Payment createPayment(OrderWrapper orderWrapper, Order order) throws Exception {
         PaymentRequest paymentRequest = makePaymentRequest(
-                orderWrapper.getPaymentWrapper(), order, orderWrapper.getCustomerWrapper());
+                orderWrapper.getPayment(), order, orderWrapper.getCustomer());
 
         return moipService.createPayment(paymentRequest);
     }

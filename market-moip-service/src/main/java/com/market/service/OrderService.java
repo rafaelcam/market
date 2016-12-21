@@ -28,20 +28,20 @@ public class OrderService implements IOrderService {
     }
 
     private OrderRequest makeOrderRequest(OrderWrapper orderWrapper) throws Exception {
-        CustomerRequest customerRequest = customerService.makeCustomerRequest(orderWrapper.getCustomerWrapper());
+        CustomerRequest customerRequest = customerService.makeCustomerRequest(orderWrapper.getCustomer());
 
         OrderRequest orderRequest = new OrderRequest()
                 .ownId(orderWrapper.getId().toString())
                 .customer(customerRequest);
-        addItemOrderRequest(orderWrapper.getCartWrapper(), orderRequest);
+        addItemOrderRequest(orderWrapper.getCart(), orderRequest);
 
         return orderRequest;
     }
 
     private void addItemOrderRequest(CartWrapper cartWrapper, OrderRequest orderRequest) {
         cartWrapper.getItems().stream().forEach(item -> {
-            Integer price = priceUtil.formatNumberForMoip(item.getProductWrapper().getPrice());
-            orderRequest.addItem(item.getProductWrapper().getName(), item.getQuantity(), item.getProductWrapper().getDescription(), price);
+            Integer price = priceUtil.formatNumberForMoip(item.getProduct().getPrice());
+            orderRequest.addItem(item.getProduct().getName(), item.getQuantity(), item.getProduct().getDescription(), price);
         });
     }
 }

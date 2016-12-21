@@ -18,7 +18,7 @@ public class ItemCartWrapper implements Serializable {
     @JsonIgnore
     private CartWrapper cartWrapper;
 
-    private ProductWrapper productWrapper;
+    private ProductWrapper product;
 
     public ItemCartWrapper() {
     }
@@ -26,14 +26,14 @@ public class ItemCartWrapper implements Serializable {
     public ItemCartWrapper(int quantity, BigDecimal totalItem, ProductWrapper productWrapper) {
         this.quantity = quantity;
         this.totalItem = totalItem;
-        this.productWrapper = productWrapper;
+        this.product = productWrapper;
     }
 
     public ItemCartWrapper(int quantity, BigDecimal totalItem, CartWrapper cartWrapper, ProductWrapper productWrapper) {
         this.quantity = quantity;
         this.totalItem = totalItem;
         this.cartWrapper = cartWrapper;
-        this.productWrapper = productWrapper;
+        this.product = productWrapper;
     }
 
     public Long getId() {
@@ -68,12 +68,12 @@ public class ItemCartWrapper implements Serializable {
         this.cartWrapper = cartWrapper;
     }
 
-    public ProductWrapper getProductWrapper() {
-        return productWrapper;
+    public ProductWrapper getProduct() {
+        return product;
     }
 
-    public void setProductWrapper(ProductWrapper productWrapper) {
-        this.productWrapper = productWrapper;
+    public void setProduct(ProductWrapper productWrapper) {
+        this.product = productWrapper;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class ItemCartWrapper implements Serializable {
                 ", quantity=" + quantity +
                 ", totalItem=" + totalItem +
                 ", cartWrapper=" + cartWrapper +
-                ", productWrapper=" + productWrapper +
+                ", productWrapper=" + product +
                 '}';
     }
 }
