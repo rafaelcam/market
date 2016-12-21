@@ -25,15 +25,4 @@ public class IntegrationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-    @RequestMapping(value = "/payment/authorized")
-    public ResponseEntity<?> paymentAuthorized() {
-        try {
-            System.out.println("O pagamento foi autorizado com sucesso!!!");
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 }
