@@ -40,9 +40,10 @@ Agora acesse `http://localhost:8080/`
 
 Projeto java construido utilizando Spring Boot.
 
-Todas as configurações necessárias para a execução do projeto estão no arquivo `application.yml` localizado no diretório `market-control-service/src/main/resources/application.yml`. Substitua as chaves `${}` pelos devidos valores. 
+Todas as configurações necessárias para a execução do projeto estão no arquivo `application.yml` localizado no diretório `market-control-service/src/main/resources/application.yml`. Substitua as chaves `${}` pelos devidos valores.
 
 ```yml
+# Configuração de porta do serviço
 server:
   port: 8081
 
@@ -74,6 +75,19 @@ rest:
     read: 20000
 ```
 
+O serviço está configurado para acessar o MySql, mas é possível acessar qualquer banco de dados, sendo necessário somente alterar as configurações.
+
+Construindo artefato do projeto com `Maven`:
+```bash
+#!/market-control-service
+$ mvn clean install
+```
+
+Sendo um projeto spring boot será gerado um `Jar` executável na pasta `target`. O projeto está configurado para subir na porta `8081`. Execute:
+```bash
+#!/market-control-service
+$ java -jar market-control-service-0.0.1-SNAPSHOT.jar
+```
 
 
 
