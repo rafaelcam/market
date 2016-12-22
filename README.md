@@ -10,9 +10,9 @@ A interface dessa aplicação foram implementas utilizando Angular 2, HTML5 e CS
 
 Para a instalação do projeto é necessário baixar as dependências com o npm, compilar os arquivos TypeScript e construir o artefato Jar com o Maven.
 
-Baixando as dependências do Angular 2:
-```bash
-#{Path}/market-web-view/src/main/resources/public
-npm install
-```
+Baixando as dependências do Angular 2 usando `npm`:
 
+```bash
+#!/market-web-view/src/main/resources/public
+$ npm install
+```
