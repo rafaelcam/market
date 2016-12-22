@@ -36,7 +36,7 @@ $ java -jar market-web-view-0.0.1-SNAPSHOT.jar
 
 Agora acesse `http://localhost:8080/`
 
-### Serviço para controle de Compras_`(market-control-service)`_
+### Serviço para controle de Compras`(market-control-service)`
 
 Projeto java construido utilizando Spring Boot.
 
