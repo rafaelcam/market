@@ -1,11 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {Product} from "./product.model";
 import {Observable} from "rxjs";
 
 @Injectable()
 export class ProductService {
-    private url = 'http://localhost:8081/';  // URL to web api
+    private url = 'http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8081/';
 
     constructor(private http: Http) { }
 

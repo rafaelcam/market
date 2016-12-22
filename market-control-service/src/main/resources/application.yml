@@ -18,7 +18,7 @@ spring:
 market:
   moip:
     service:
-      url: http://localhost:8082
+      url: http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8082
 
 rest:
   timeout:

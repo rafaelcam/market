@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class OrderService {
-    private url = 'http://localhost:8081/';
+    private url = 'http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8081/';
     order: Order;
     orderComplete: Order;
 
