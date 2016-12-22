@@ -138,7 +138,7 @@ $ java -jar market-control-service-0.0.1-SNAPSHOT.jar
 Esse serviço possui um recurso para atender ao webhook que notifica que o pagamento foi autorizado. o recurso recebe uma instância da entidade `Payment` como parâmetro e chama o serviço controlador da loja passando o número do pagamento autorizado.
 
 ```url
-	http://${host_service_moip}:8082/webhook/payment/authorized
+http://${host_service_moip}:8082/webhook/payment/authorized
 ```
 
 
