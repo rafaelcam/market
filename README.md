@@ -4,7 +4,7 @@
 - market-control-service
 - market-moip-service
 
-### Aplicação Web_`(market-web-view)`_
+### Aplicação Web`(market-web-view)`
 
 A interface dessa aplicação foi implementada utilizando Angular 2, HTML5 e CSS3 encapsulados em um projeto Java usando Spring Boot. Nela o usuário pode escolher seus produtos e finalizar sua compra.
 
