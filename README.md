@@ -12,6 +12,7 @@ Para a instalação do projeto é necessário baixar as dependências com o npm,
 
 Baixando as dependências do Angular 2:
 ```bash
-	npm install
+#{Path}/market-web-view/src/main/resources/public
+npm install
 ```
 
