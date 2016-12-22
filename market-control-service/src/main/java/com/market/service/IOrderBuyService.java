@@ -4,8 +4,10 @@ import com.market.model.OrderBuy;
 
 public interface IOrderBuyService {
 
-    public OrderBuy create(OrderBuy orderBuy) throws Exception;
+    OrderBuy create(OrderBuy orderBuy) throws Exception;
 
-    public OrderBuy findById(Long id) throws Exception;
+    OrderBuy findById(Long id) throws Exception;
+
+    void updateStatusOrderForPaidOut(String numberPayment) throws Exception;
 
 }

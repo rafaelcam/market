@@ -8,6 +8,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "order_buy")
+@NamedQueries(
+        @NamedQuery(name = "OrderBuy.findByPaymentNumber",
+                query = "Select o From OrderBuy o Where o.payment.numberPayment = ?1")
+)
 public class OrderBuy implements Serializable {
 
     private static final long serialVersionUID = 1L;

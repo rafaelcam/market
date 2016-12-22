@@ -5,3 +5,13 @@ moip:
   endpoint: sandbox.moip.com.br
   token: 5WFMTKA2J0ZH8EP5E8G4I3RA86T92629
   key: DAGOUQ4BJVCEPRWXF3J6IGDTKAPLPVAUI4WV2Z5J
+
+rest:
+  timeout:
+    connect: 20000
+    read: 20000
+
+market:
+  control:
+    service:
+      url: http://localhost:8081

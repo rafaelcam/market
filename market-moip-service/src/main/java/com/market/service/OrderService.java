@@ -4,6 +4,7 @@ import br.com.moip.request.CustomerRequest;
 import br.com.moip.request.OrderRequest;
 import br.com.moip.resource.Order;
 import com.market.util.PriceUtil;
+import com.market.util.RandomUtil;
 import com.market.wrapper.CartWrapper;
 import com.market.wrapper.OrderWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class OrderService implements IOrderService {
     @Autowired
     PriceUtil priceUtil;
 
+    @Autowired
+    RandomUtil randomUtil;
+
     @Override
     public Order createOrder(OrderWrapper orderWrapper) throws Exception {
         OrderRequest orderRequest = makeOrderRequest(orderWrapper);
@@ -31,7 +35,7 @@ public class OrderService implements IOrderService {
         CustomerRequest customerRequest = customerService.makeCustomerRequest(orderWrapper.getCustomer());
 
         OrderRequest orderRequest = new OrderRequest()
-                .ownId(orderWrapper.getId().toString())
+                .ownId(randomUtil.generateOwnId())
                 .customer(customerRequest);
         addItemOrderRequest(orderWrapper.getCart(), orderRequest);
 

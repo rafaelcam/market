@@ -3,13 +3,13 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/market?useSSL=false
+    url: jdbc:mysql://market.cfcloopw4xcn.us-west-2.rds.amazonaws.com:3306/market?useSSL=false
     username: root
-    password: minhasenha0909
+    password: minhasenha
     driver-class: com.mysql.jdbc.Driver
 
   jpa:
-    database-platform:  org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
     generate-ddl: true
     hibernate:

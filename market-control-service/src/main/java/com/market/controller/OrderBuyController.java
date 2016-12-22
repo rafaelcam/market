@@ -48,5 +48,16 @@ public class OrderBuyController {
         }
     }
 
+    @RequestMapping(value = "statusforpaid", method= RequestMethod.POST)
+    public ResponseEntity<?> updateStatusOrderForPaidOut(@RequestBody String paymentNumber) {
+        try {
+            service.updateStatusOrderForPaidOut(paymentNumber);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 }

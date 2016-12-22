@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderBuyRepository extends JpaRepository<OrderBuy, Long>{
 
+    OrderBuy findByPaymentNumber(String paymentNumber);
+
 }

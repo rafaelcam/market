@@ -24,9 +24,8 @@ public class OrderBuyService implements IOrderBuyService {
     @Override
     @Transactional
     public OrderBuy create(OrderBuy orderBuy) throws Exception {
+        orderBuy = moipIntegration.integrate(orderBuy);
         save(orderBuy);
-        moipIntegration.integrate(orderBuy);
-        repository.save(orderBuy);
 
         return orderBuy;
     }
@@ -34,6 +33,13 @@ public class OrderBuyService implements IOrderBuyService {
     @Override
     public OrderBuy findById(Long id) throws Exception {
         return repository.findOne(id);
+    }
+
+    @Override
+    public void updateStatusOrderForPaidOut(String numberPayment) throws Exception {
+        OrderBuy orderBuy = repository.findByPaymentNumber(numberPayment);
+        orderBuy.setStatusOrder(StatusOrder.PAGO);
+        repository.save(orderBuy);
     }
 
     private void save(OrderBuy orderBuy) throws Exception {
