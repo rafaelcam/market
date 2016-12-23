@@ -24,7 +24,7 @@ public class FundingInstrumentService implements IFundingInstrumentService {
         return new FundingInstrumentRequest().creditCard(makeCreditCardRequest(paymentWrapper, customerWrapper));
     }
 
-    private CreditCardRequest makeCreditCardRequest(PaymentWrapper paymentWrapper, CustomerWrapper customerWrapper) throws Exception {
+    public CreditCardRequest makeCreditCardRequest(PaymentWrapper paymentWrapper, CustomerWrapper customerWrapper) throws Exception {
         return new CreditCardRequest()
                 .hash(paymentWrapper.getHash())
                 .holder(new HolderRequest()

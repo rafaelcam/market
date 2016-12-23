@@ -1,54 +1,38 @@
 package com.market.service;
 
-import com.market.client.MarketControlClient;
-import com.market.wrapper.CartWrapper;
+import br.com.moip.request.CreditCardRequest;
 import com.market.wrapper.CustomerWrapper;
-import com.market.wrapper.OrderWrapper;
 import com.market.wrapper.PaymentWrapper;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrderServiceTest {
+public class FundingInstrumentServiceTest {
 
     @Autowired
-    IIntegrationService integrationService;
-
-    @Autowired
-    MarketControlClient marketControlClient;
+    FundingInstrumentService fundingInstrumentService;
 
     @Test
-    @Ignore
-    public void mustCreateOrderTest() {
-        OrderWrapper orderWrapper = new OrderWrapper.Builder()
-                .cart(buildCart())
-                .customer(buildCustomer())
-                .payment(buildPayment())
-                .build();
+    public void shouldMakeCreditCardRequest() {
+        PaymentWrapper payment = buildPayment();
+        CustomerWrapper customer = buildCustomer();
 
         try {
-            integrationService.integrateMoip(orderWrapper);
+            CreditCardRequest creditCardRequest
+                    = fundingInstrumentService.makeCreditCardRequest(payment, customer);
+            assertEquals(payment.getHash(), creditCardRequest.getHash());
+            assertEquals(customer.getCpf(), creditCardRequest.getHolder().getTaxDocument().getNumber());
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private CartWrapper buildCart() {
-        return new CartWrapper.Builder()
-                .totalCart(BigDecimal.TEN)
-                .discount(new BigDecimal(15.045))
-                .addition(new BigDecimal(7.5225))
-                .item(3, BigDecimal.valueOf(300.90), "Camisa", "Camisa manga Longa", BigDecimal.valueOf(100.30))
-                .build();
-
     }
 
     private CustomerWrapper buildCustomer() {
