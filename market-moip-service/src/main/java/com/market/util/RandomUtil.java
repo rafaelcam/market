@@ -12,5 +12,4 @@ public class RandomUtil {
         SecureRandom random = new SecureRandom();
         return new BigInteger(32, random).toString(32);
     }
-
 }

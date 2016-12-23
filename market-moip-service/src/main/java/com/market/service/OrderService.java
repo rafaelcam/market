@@ -55,4 +55,8 @@ public class OrderService implements IOrderService {
             orderRequest.addItem(item.getProduct().getName(), item.getQuantity(), item.getProduct().getDescription(), price);
         });
     }
+
+    public void setMoipService(IMoipService moipService) {
+        this.moipService = moipService;
+    }
 }

@@ -1,33 +1,62 @@
 package com.market.service;
 
-import com.market.client.MarketControlClient;
+import br.com.moip.resource.Order;
+import com.market.request.OrderRequest;
 import com.market.wrapper.CartWrapper;
 import com.market.wrapper.CustomerWrapper;
 import com.market.wrapper.OrderWrapper;
 import com.market.wrapper.PaymentWrapper;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderServiceTest {
 
     @Autowired
-    IIntegrationService integrationService;
+    OrderService orderService;
+
+    @MockBean
+    IMoipService moipService;
 
     @Autowired
-    MarketControlClient marketControlClient;
+    IIntegrationService integrationService;
+
+    @Before
+    public void setup() {
+        orderService.setMoipService(moipService);
+    }
+
+    @Test
+    public void shouldCreateOrderResquestTest() {
+        OrderWrapper orderWrapper = buildOrder();
+
+        try {
+            given(moipService.createOrder(new OrderRequest()))
+                    .willReturn(new Order());
+
+            orderService.createOrder(orderWrapper);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.assertTrue(false);
+        }
+    }
 
     @Test
     @Ignore
-    public void mustCreateOrderTest() {
+    public void shouldCreateOrderTest() {
         OrderWrapper orderWrapper = new OrderWrapper.Builder()
                 .cart(buildCart())
                 .customer(buildCustomer())
@@ -39,6 +68,14 @@ public class OrderServiceTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private OrderWrapper buildOrder() {
+        return new OrderWrapper.Builder()
+                .cart(buildCart())
+                .customer(buildCustomer())
+                .payment(buildPayment())
+                .build();
     }
 
     private CartWrapper buildCart() {

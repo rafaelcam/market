@@ -36,4 +36,8 @@ public class PaymentService implements IPaymentService {
                 .orderId(order.getId())
                 .fundingInstrument(fundingInstrumentRequest);
     }
+
+    public void setMoipService(IMoipService moipService) {
+        this.moipService = moipService;
+    }
 }
