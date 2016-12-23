@@ -10,6 +10,7 @@ import {Cart} from "../cart/cart.model";
 import {Customer} from "../customer/customer.model";
 import {Payment} from "../payment/payment.model";
 import {Router} from "@angular/router";
+import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 
 @Injectable()
 export class OrderService {
@@ -22,7 +23,8 @@ export class OrderService {
                 private cartService: CartService,
                 private customerService: CustomerService,
                 private paymentService: PaymentService,
-                private router: Router) {
+                private router: Router,
+                private loading: SlimLoadingBarService) {
         this.orderComplete = new Order(new Cart(), new Customer(), new Payment());
     }
 
@@ -69,13 +71,19 @@ export class OrderService {
     }
 
     private sendOrderRequest(): void {
+        this.loading.start(() => {
+            console.log('Loading complete');
+        });
+
         this.callSendOrderRequest()
             .subscribe(res => {
                 this.orderComplete = res;
                 this.clearData();
+                this.loading.complete();
                 this.router.navigate(['checkout/complete']);
             }, error => {
                 console.log(error.json());
+                this.loading.complete();
                 this.messageService.loadErrorMessages(error.json());
             });
     }

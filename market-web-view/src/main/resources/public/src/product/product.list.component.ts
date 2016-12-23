@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Product} from "./product.model";
 import {CartService} from "../cart/cart.service";
 import {ProductService} from "./product.service";
@@ -15,7 +15,8 @@ export class ProductListComponent implements OnInit{
         this.findAllProducts();
     }
 
-    constructor(public cartService: CartService, public productService: ProductService) { }
+    constructor(public cartService: CartService,
+                public productService: ProductService) { }
 
     addProductCart(product: Product): void {
         this.cartService.addItem(product);

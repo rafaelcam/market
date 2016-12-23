@@ -24,12 +24,14 @@ import {MessageService} from "./message/message.service";
 import {MessageComponent} from "./message/message.component";
 import {CheckoutCompleteComponent} from "./checkout/checkout.complete.component";
 import {StatusOrderComponent} from "./status/status.order.component";
+import {SlimLoadingBarModule} from "ng2-slim-loading-bar";
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    SlimLoadingBarModule.forRoot(),
     HttpModule,
     routing
   ],
