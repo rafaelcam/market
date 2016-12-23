@@ -1,8 +1,10 @@
 package com.market.service;
 
 import br.com.moip.request.CustomerRequest;
-import br.com.moip.request.OrderRequest;
 import br.com.moip.resource.Order;
+import com.market.request.AmountRequest;
+import com.market.request.OrderRequest;
+import com.market.request.SubTotalsRequest;
 import com.market.util.PriceUtil;
 import com.market.util.RandomUtil;
 import com.market.wrapper.CartWrapper;
@@ -20,6 +22,9 @@ public class OrderService implements IOrderService {
     ICustomerService customerService;
 
     @Autowired
+    ISubTotalsService subTotalsService;
+
+    @Autowired
     PriceUtil priceUtil;
 
     @Autowired
@@ -33,8 +38,10 @@ public class OrderService implements IOrderService {
 
     private OrderRequest makeOrderRequest(OrderWrapper orderWrapper) throws Exception {
         CustomerRequest customerRequest = customerService.makeCustomerRequest(orderWrapper.getCustomer());
+        SubTotalsRequest subTotalsRequest = subTotalsService.makeSubTotalsRequest(orderWrapper.getCart());
 
-        OrderRequest orderRequest = new OrderRequest()
+        OrderRequest orderRequest = (OrderRequest) new OrderRequest()
+                .amount(new AmountRequest().subtotals(subTotalsRequest))
                 .ownId(randomUtil.generateOwnId())
                 .customer(customerRequest);
         addItemOrderRequest(orderWrapper.getCart(), orderRequest);

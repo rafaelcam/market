@@ -42,7 +42,8 @@ public class OrderServiceTest {
     private CartWrapper buildCart() {
         return new CartWrapper.Builder()
                 .totalCart(BigDecimal.TEN)
-                .discount(BigDecimal.TEN)
+                .discount(new BigDecimal(15.045))
+                .addition(new BigDecimal(7.5225))
                 .item(3, BigDecimal.valueOf(300.90), "Camisa", "Camisa manga Longa", BigDecimal.valueOf(100.30))
                 .build();
 

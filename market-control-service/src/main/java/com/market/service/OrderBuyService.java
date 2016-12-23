@@ -19,12 +19,17 @@ public class OrderBuyService implements IOrderBuyService {
     OrderBuyRepository repository;
 
     @Autowired
+    SubTotalsService subTotalsService;
+
+    @Autowired
     MoipIntegration moipIntegration;
 
     @Override
     @Transactional
     public OrderBuy create(OrderBuy orderBuy) throws Exception {
+        subTotalsService.calculateSubTotals(orderBuy);
         orderBuy = moipIntegration.integrate(orderBuy);
+
         save(orderBuy);
 
         return orderBuy;

@@ -13,6 +13,8 @@ public class CartWrapper implements Serializable {
 
     private BigDecimal discount;
 
+    private BigDecimal addition;
+
     private BigDecimal totalCart;
 
     private List<ItemCartWrapper> items;
@@ -20,8 +22,10 @@ public class CartWrapper implements Serializable {
     public CartWrapper() {
     }
 
-    public CartWrapper(BigDecimal discount, BigDecimal totalCart, List<ItemCartWrapper> items) {
+    public CartWrapper(Long id, BigDecimal discount, BigDecimal addition, BigDecimal totalCart, List<ItemCartWrapper> items) {
+        this.id = id;
         this.discount = discount;
+        this.addition = addition;
         this.totalCart = totalCart;
         this.items = items;
     }
@@ -29,6 +33,7 @@ public class CartWrapper implements Serializable {
     public CartWrapper(Builder builder) {
         this.id = builder.id;
         this.discount = builder.discount;
+        this.addition = builder.addition;
         this.totalCart = builder.totalCart;
         this.items = builder.items;
     }
@@ -47,6 +52,14 @@ public class CartWrapper implements Serializable {
 
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
+    }
+
+    public BigDecimal getAddition() {
+        return addition;
+    }
+
+    public void setAddition(BigDecimal addition) {
+        this.addition = addition;
     }
 
     public BigDecimal getTotalCart() {
@@ -70,6 +83,7 @@ public class CartWrapper implements Serializable {
         return "CartWrapper{" +
                 "id=" + id +
                 ", discount=" + discount +
+                ", addition=" + addition +
                 ", totalCart=" + totalCart +
                 ", items=" + items +
                 '}';
@@ -78,6 +92,7 @@ public class CartWrapper implements Serializable {
     public static class Builder {
         private Long id;
         private BigDecimal discount;
+        private BigDecimal addition;
         private BigDecimal totalCart;
         private List<ItemCartWrapper> items;
 
@@ -92,6 +107,11 @@ public class CartWrapper implements Serializable {
 
         public Builder discount(BigDecimal discount) {
             this.discount = discount;
+            return this;
+        }
+
+        public Builder addition(BigDecimal addition) {
+            this.addition = addition;
             return this;
         }
 

@@ -61,12 +61,16 @@
                                     <td class="value">{{ order.cart.totalCart | currency:'BRL':true:'1.2-2' }}</td>
                                 </tr>
                                 <tr>
+                                    <td class="field">Juros</td>
+                                    <td class="value">{{ order.cart.addition | currency:'BRL':true:'1.2-2' }}</td>
+                                </tr>
+                                <tr>
                                     <td class="field">Desconto</td>
                                     <td class="value">{{ order.cart.discount | currency:'BRL':true:'1.2-2' }}</td>
                                 </tr>
                                 <tr>
                                     <td class="field">Total</td>
-                                    <td class="value">{{ order.cart.totalCart-order.cart.discount | currency:'BRL':true:'1.2-2' }}</td>
+                                    <td class="value">{{ ((order.cart.totalCart-order.cart.discount)+order.cart.addition) | currency:'BRL':true:'1.2-2' }}</td>
                                 </tr>
                                 </tbody>
                             </table>

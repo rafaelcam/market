@@ -17,6 +17,8 @@ public class Cart implements Serializable {
 
     private BigDecimal discount;
 
+    private BigDecimal addition;
+
     @Column(name = "total_cart")
     private BigDecimal totalCart;
 
@@ -26,8 +28,9 @@ public class Cart implements Serializable {
     public Cart() {
     }
 
-    public Cart(BigDecimal discount, BigDecimal totalCart, List<ItemCart> items) {
+    public Cart(BigDecimal discount, BigDecimal addition, BigDecimal totalCart, List<ItemCart> items) {
         this.discount = discount;
+        this.addition = addition;
         this.totalCart = totalCart;
         this.items = items;
     }
@@ -46,6 +49,14 @@ public class Cart implements Serializable {
 
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
+    }
+
+    public BigDecimal getAddition() {
+        return addition;
+    }
+
+    public void setAddition(BigDecimal addition) {
+        this.addition = addition;
     }
 
     public BigDecimal getTotalCart() {
@@ -69,6 +80,7 @@ public class Cart implements Serializable {
         return "Cart{" +
                 "id=" + id +
                 ", discount=" + discount +
+                ", addition=" + addition +
                 ", totalCart=" + totalCart +
                 ", items=" + items +
                 '}';
