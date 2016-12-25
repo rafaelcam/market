@@ -11,12 +11,14 @@ import {Customer} from "../customer/customer.model";
 import {Payment} from "../payment/payment.model";
 import {Router} from "@angular/router";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
+import {AppConfig} from "../config/app.config";
+import {disableDebugTools} from "@angular/platform-browser";
 
 @Injectable()
 export class OrderService {
-    private url = 'http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8081/';
     order: Order;
     orderComplete: Order;
+    disableCheckout: boolean;
 
     constructor(private messageService: MessageService,
                 private http: Http,
@@ -26,6 +28,10 @@ export class OrderService {
                 private router: Router,
                 private loading: SlimLoadingBarService) {
         this.orderComplete = new Order(new Cart(), new Customer(), new Payment());
+        this.disableCheckout = false;
+
+        loading.color = '#31a3a3';
+        loading.height = '4px';
     }
 
     checkout(): void {
@@ -74,15 +80,18 @@ export class OrderService {
         this.loading.start(() => {
             console.log('Loading complete');
         });
+        this.disableCheckout = true;
 
         this.callSendOrderRequest()
             .subscribe(res => {
                 this.orderComplete = res;
                 this.clearData();
                 this.loading.complete();
-                this.router.navigate(['checkout/complete']);
+                this.disableCheckout = false;
+                this.router.navigate(['checkout/cart']);
             }, error => {
                 console.log(error.json());
+                this.disableCheckout = false;
                 this.loading.complete();
                 this.messageService.loadErrorMessages(error.json());
             });
@@ -95,23 +104,23 @@ export class OrderService {
     }
 
     private callValidateOrder(): Observable<any> {
-        return this.http.post(this.url+"orderbuy/isvalid", this.order).map(res => res);
+        return this.http.post(AppConfig.API_ENDPOINT+"orderbuy/isvalid", this.order).map(res => res);
     }
 
     private callValidateCustomer(): Observable<any> {
-        return this.http.post(this.url+"customer/isvalid", this.order.customer).map(res => res);
+        return this.http.post(AppConfig.API_ENDPOINT+"customer/isvalid", this.order.customer).map(res => res);
     }
 
     private callValidatePayment(): Observable<any> {
-        return this.http.post(this.url+"payment/isvalid", this.order.payment).map(res => res);
+        return this.http.post(AppConfig.API_ENDPOINT+"payment/isvalid", this.order.payment).map(res => res);
     }
 
     private callSendOrderRequest(): Observable<any> {
-        return this.http.post(this.url+"orderbuy/", this.order).map(res => res.json());
+        return this.http.post(AppConfig.API_ENDPOINT+"orderbuy/", this.order).map(res => res.json());
     }
 
     public findById(id: number): Observable<any> {
-        return this.http.get(this.url+"orderbuy/"+id).map(res => res.json());
+        return this.http.get(AppConfig.API_ENDPOINT+"orderbuy/"+id).map(res => res.json());
     }
 
     private makeOrder(): void {

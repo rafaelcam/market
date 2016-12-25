@@ -37,8 +37,7 @@ export class StatusOrderComponent implements OnInit, OnDestroy  {
             .subscribe(res => {
                 this.order = res;
             }, error => {
-                alert('Ocorreu um erro ao tentar verificar seu ' +
-                    'Pedido, Entre em contato com o Administrador')
+                alert('O número do pedido não foi encontrado em nossa Base de Dados.')
             });
     }
 

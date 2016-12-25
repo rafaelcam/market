@@ -25,6 +25,7 @@ import {MessageComponent} from "./message/message.component";
 import {CheckoutCompleteComponent} from "./checkout/checkout.complete.component";
 import {StatusOrderComponent} from "./status/status.order.component";
 import {SlimLoadingBarModule} from "ng2-slim-loading-bar";
+import {VerifyOrderComponent} from "./status/verify.order.component";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {SlimLoadingBarModule} from "ng2-slim-loading-bar";
     OrderButtonComponent,
     MessageComponent,
     CheckoutCompleteComponent,
-    StatusOrderComponent
+    StatusOrderComponent,
+    VerifyOrderComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "pt-BR" },

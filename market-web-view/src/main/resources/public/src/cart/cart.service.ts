@@ -3,13 +3,15 @@ import {Product} from "../product/product.model";
 import {Cart} from "./cart.model";
 import {ItemCartService} from "./item.cart.service";
 import {ItemCart} from "./item.cart.model";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class CartService {
 
     cart: Cart;
 
-    constructor(public itemCartService: ItemCartService) {
+    constructor(public itemCartService: ItemCartService,
+                private router: Router,) {
         this.cart = new Cart();
     }
 
@@ -23,6 +25,7 @@ export class CartService {
         }
 
         this.calculateTotalCart();
+        this.router.navigate(['checkout/cart']);
     }
 
     removeItem(item: ItemCart): void {

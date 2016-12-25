@@ -85,7 +85,7 @@ interface Array<T> {
       * Returns the value of the first element in the array where predicate is true, and undefined
       * otherwise.
       * @param predicate find calls predicate once for each element of the array, in ascending
-      * cart, until it finds one where predicate returns true. If such an element is found, find
+      * order, until it finds one where predicate returns true. If such an element is found, find
       * immediately returns that element value. Otherwise, find returns undefined.
       * @param thisArg If provided, it will be used as the this value for each invocation of
       * predicate. If it is not provided, undefined is used instead.
@@ -96,7 +96,7 @@ interface Array<T> {
       * Returns the index of the first element in the array where predicate is true, and undefined
       * otherwise.
       * @param predicate find calls predicate once for each element of the array, in ascending
-      * cart, until it finds one where predicate returns true. If such an element is found, find
+      * order, until it finds one where predicate returns true. If such an element is found, find
       * immediately returns that element value. Otherwise, find returns undefined.
       * @param thisArg If provided, it will be used as the this value for each invocation of
       * predicate. If it is not provided, undefined is used instead.
@@ -213,7 +213,7 @@ interface String {
 
 interface StringConstructor {
     /**
-      * Return the String value whose elements are, in cart, the elements in the List elements.
+      * Return the String value whose elements are, in order, the elements in the List elements.
       * If length is 0, the empty string is returned.
       */
     fromCodePoint(...codePoints: number[]): string;
@@ -231,7 +231,7 @@ interface StringConstructor {
 interface RegExp {
     /**
       * Returns a string indicating the flags of the regular expression in question. This field is read-only.
-      * The characters in this string are sequenced and concatenated in the following cart:
+      * The characters in this string are sequenced and concatenated in the following order:
       *
       *    - "g" for global
       *    - "i" for ignoreCase
@@ -947,7 +947,7 @@ interface ArrayConstructor {
 
     /**
       * Sorts an array.
-      * @param compareFn The name of the function used to determine the cart of the elements. If omitted, the elements are sorted in ascending, ASCII character cart.
+      * @param compareFn The name of the function used to determine the order of the elements. If omitted, the elements are sorted in ascending, ASCII character order.
       */
     sort<T>(array: ArrayLike<T>, compareFn?: (a: T, b: T) => number): T[];
 
@@ -1035,14 +1035,14 @@ interface ArrayConstructor {
     reduce<T>(array: ArrayLike<T>, callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue?: T): T;
 
     /**
-      * Calls the specified callback function for all the elements in an array, in descending cart. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+      * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
       * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
       * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
       */
     reduceRight<T, U>(array: ArrayLike<T>, callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;
 
     /**
-      * Calls the specified callback function for all the elements in an array, in descending cart. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+      * Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
       * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
       * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
       */
@@ -1067,7 +1067,7 @@ interface ArrayConstructor {
       * Returns the value of the first element in the array where predicate is true, and undefined
       * otherwise.
       * @param predicate find calls predicate once for each element of the array, in ascending
-      * cart, until it finds one where predicate returns true. If such an element is found, find
+      * order, until it finds one where predicate returns true. If such an element is found, find
       * immediately returns that element value. Otherwise, find returns undefined.
       * @param thisArg If provided, it will be used as the this value for each invocation of
       * predicate. If it is not provided, undefined is used instead.
@@ -1078,7 +1078,7 @@ interface ArrayConstructor {
       * Returns the index of the first element in the array where predicate is true, and undefined
       * otherwise.
       * @param predicate find calls predicate once for each element of the array, in ascending
-      * cart, until it finds one where predicate returns true. If such an element is found, find
+      * order, until it finds one where predicate returns true. If such an element is found, find
       * immediately returns that element value. Otherwise, find returns undefined.
       * @param thisArg If provided, it will be used as the this value for each invocation of
       * predicate. If it is not provided, undefined is used instead.

@@ -8,6 +8,7 @@ import {CheckoutInfoComponent} from "./checkout/checkout.info.component";
 import {CheckoutPaymentComponent} from "./checkout/checkout.payment.component";
 import {CheckoutCompleteComponent} from "./checkout/checkout.complete.component";
 import {StatusOrderComponent} from "./status/status.order.component";
+import {VerifyOrderComponent} from "./status/verify.order.component";
 
 // Route Configuration
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'checkout/payment', component: CheckoutPaymentComponent },
     { path: 'checkout/complete', component: CheckoutCompleteComponent },
     { path: 'status/order/:id', component: StatusOrderComponent },
+    { path: 'verify/order', component: VerifyOrderComponent },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

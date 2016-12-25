@@ -1925,7 +1925,7 @@ declare module "path" {
      *
      * Starting from leftmost {from} paramter, resolves {to} to an absolute path.
      *
-     * If {to} isn't already absolute, {from} arguments are prepended in right to left cart, until an absolute path is found. If after using all {from} paths still no absolute path is found, the current working directory is used as well. The resulting path is normalized, and trailing slashes are removed unless the path gets resolved to the root directory.
+     * If {to} isn't already absolute, {from} arguments are prepended in right to left order, until an absolute path is found. If after using all {from} paths still no absolute path is found, the current working directory is used as well. The resulting path is normalized, and trailing slashes are removed unless the path gets resolved to the root directory.
      *
      * @param pathSegments string paths to join.  Non-string arguments are ignored.
      */

@@ -1,1 +1,1 @@
-<a (click)="sendOrder()" class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10">Finalizar</a>
+<button (click)="sendOrder()" class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10" [disabled]="orderService.disableCheckout">Finalizar</button>
