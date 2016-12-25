@@ -2,7 +2,7 @@
   "name": "market",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
