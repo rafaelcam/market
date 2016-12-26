@@ -10,6 +10,16 @@ Demostrativo: http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8080/
 
 A interface dessa aplicação foi implementada utilizando Angular 2, HTML5 e CSS3 encapsulados em um projeto Java usando Spring Boot. Nela o usuário pode escolher seus produtos e finalizar sua compra.
 
+Primeiramente configure o endpoint do serviço controlador da loja:
+```TypeScript
+#!/market-web-view/src/main/resources/public/src/config/app.config.ts
+export class AppConfig {
+    public static get API_ENDPOINT(): string { 
+    	return 'http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8081/'; 
+    }
+}
+```
+
 Para a instalação do projeto é necessário baixar as dependências com o npm, compilar os arquivos TypeScript e construir o artefato Jar com o Maven.
 
 Baixando as dependências do Angular 2 com `npm`:
@@ -142,5 +152,3 @@ Esse serviço possui um recurso para atender ao webhook que notifica que o pagam
 ```url
 http://${host_service_moip}:8082/webhook/payment/authorized
 ```
-
-
