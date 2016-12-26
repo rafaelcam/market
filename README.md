@@ -15,7 +15,7 @@ Primeiramente configure o endpoint do serviço controlador da loja:
 //market-web-view/src/main/resources/public/src/config/app.config.ts
 export class AppConfig {
     public static get API_ENDPOINT(): string { 
-    	return 'http://ec2-54-187-197-124.us-west-2.compute.amazonaws.com:8081/'; 
+    	return 'http://${host_service_control}:8081/'; 
     }
 }
 ```
