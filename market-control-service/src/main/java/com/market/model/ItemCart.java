@@ -44,6 +44,12 @@ public class ItemCart implements Serializable {
         this.product = product;
     }
 
+    public ItemCart(int quantity, BigDecimal totalItem, Product product) {
+        this.quantity = quantity;
+        this.totalItem = totalItem;
+        this.product = product;
+    }
+
     public Long getId() {
         return id;
     }

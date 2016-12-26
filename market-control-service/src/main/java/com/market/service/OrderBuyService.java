@@ -52,4 +52,8 @@ public class OrderBuyService implements IOrderBuyService {
         itemCartService.loadCartInItemsCart(orderBuy.getCart());
         orderBuy = repository.save(orderBuy);
     }
+
+    public void setRepository(OrderBuyRepository repository) {
+        this.repository = repository;
+    }
 }

@@ -3,6 +3,7 @@ package com.market.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,13 @@ public class Cart implements Serializable {
         this.addition = addition;
         this.totalCart = totalCart;
         this.items = items;
+    }
+
+    public Cart(Builder builder) {
+        this.discount = builder.discount;
+        this.addition = builder.addition;
+        this.totalCart = builder.totalCart;
+        this.items = builder.items;
     }
 
     public Long getId() {
@@ -84,5 +92,50 @@ public class Cart implements Serializable {
                 ", totalCart=" + totalCart +
                 ", items=" + items +
                 '}';
+    }
+
+    public static class Builder {
+        private Long id;
+        private BigDecimal discount;
+        private BigDecimal addition;
+        private BigDecimal totalCart;
+        private List<ItemCart> items;
+
+        public Builder() {
+            items = new ArrayList<>();
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder discount(BigDecimal discount) {
+            this.discount = discount;
+            return this;
+        }
+
+        public Builder addition(BigDecimal addition) {
+            this.addition = addition;
+            return this;
+        }
+
+        public Builder totalCart(BigDecimal totalCart) {
+            this.totalCart = totalCart;
+            return this;
+        }
+
+        public Builder item(int quantity, BigDecimal totalItem,
+                            String nameProduct, String descriptionProduct, BigDecimal priceProduct) {
+            ItemCart item = new ItemCart(quantity, totalItem,
+                    new Product(nameProduct, descriptionProduct, priceProduct));
+
+            this.items.add(item);
+            return this;
+        }
+
+        public Cart build() {
+            return new Cart(this);
+        }
     }
 }

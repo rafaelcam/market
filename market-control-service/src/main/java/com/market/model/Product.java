@@ -33,6 +33,12 @@ public class Product implements Serializable {
         this.image = image;
     }
 
+    public Product(String name, String description, BigDecimal price) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
+
     public Long getId() {
         return id;
     }

@@ -51,6 +51,12 @@ public class OrderBuy implements Serializable {
         this.payment = payment;
     }
 
+    public OrderBuy(Builder builder) {
+        this.cart = builder.cart;
+        this.customer = builder.customer;
+        this.payment = builder.payment;
+    }
+
     public Long getId() {
         return id;
     }
@@ -97,5 +103,56 @@ public class OrderBuy implements Serializable {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderBuy{" +
+                "id=" + id +
+                ", numberOrder='" + numberOrder + '\'' +
+                ", statusOrder=" + statusOrder +
+                ", cart=" + cart +
+                ", customer=" + customer +
+                ", payment=" + payment +
+                '}';
+    }
+
+    public static class Builder {
+        private Long id;
+        private String number;
+        private Cart cart;
+        private Customer customer;
+        private Payment payment;
+
+        public Builder() {}
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder number(String number) {
+            this.number = number;
+            return this;
+        }
+
+        public Builder cart(Cart cart) {
+            this.cart = cart;
+            return this;
+        }
+
+        public Builder customer(Customer customer) {
+            this.customer = customer;
+            return this;
+        }
+
+        public Builder payment(Payment payment) {
+            this.payment = payment;
+            return this;
+        }
+
+        public OrderBuy build() {
+            return new OrderBuy(this);
+        }
     }
 }

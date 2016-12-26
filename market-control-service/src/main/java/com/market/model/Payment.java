@@ -61,6 +61,16 @@ public class Payment implements Serializable {
         this.hash = hash;
     }
 
+    public Payment(Builder builder) {
+        this.name = builder.name;
+        this.number = builder.number;
+        this.monthExpiration = builder.monthExpiration;
+        this.yearExpiration = builder.yearExpiration;
+        this.securityCode = builder.securityCode;
+        this.installments = builder.installments;
+        this.hash = builder.hash;
+    }
+
     public Long getId() {
         return id;
     }
@@ -146,5 +156,42 @@ public class Payment implements Serializable {
                 ", installments=" + installments +
                 ", hash='" + hash + '\'' +
                 '}';
+    }
+
+    public static class Builder {
+        private Long id;
+        private String name;
+        private String number;
+        private String monthExpiration;
+        private String yearExpiration;
+        private String securityCode;
+        private Integer installments;
+        private String hash;
+
+        public Builder() { }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder installments(Integer installments) {
+            this.installments = installments;
+            return this;
+        }
+
+        public Builder hash(String hash) {
+            this.hash = hash;
+            return this;
+        }
+
+        public Payment build() {
+            return new Payment(this);
+        }
     }
 }
