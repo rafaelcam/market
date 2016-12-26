@@ -73,6 +73,11 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+      
+# Porcentagem de juros para pagamentos com mais de 1 parcela.
+installments:
+  addition:
+    percentage: 2.5
 
 # Configuração da url de acesso do serviço Moip
 market:
