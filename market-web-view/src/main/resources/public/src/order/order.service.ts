@@ -88,7 +88,7 @@ export class OrderService {
                 this.clearData();
                 this.loading.complete();
                 this.disableCheckout = false;
-                this.router.navigate(['checkout/cart']);
+                this.router.navigate(['checkout/complete']);
             }, error => {
                 console.log(error.json());
                 this.disableCheckout = false;
